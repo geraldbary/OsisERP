@@ -3,13 +3,16 @@
 #
 #          FILE: osiserp-deploy.sh
 #
-#         USAGE: curl -sSL https://raw.githubusercontent.com/geraldbary/OsisERP/main/scripts/osiserp-deploy.sh | bash
-#                or: ./osiserp-deploy.sh
+#         USAGE: curl -sSL https://raw.githubusercontent.com/geraldbary/OsisERP/main/scripts/osiserp-deploy.sh | sudo bash -s -- --auto
+#                or: ./osiserp-deploy.sh [OPTIONS]
 #
 #   DESCRIPTION: OsisERP Automated Deployment Script
 #                Deploys OCA/OCB 18.0 based ERP with custom modules
 #
-#       OPTIONS: --help, --uninstall, --update
+#       OPTIONS: --auto        Auto-accept defaults (for non-interactive install)
+#                --help        Show help message
+#                --uninstall   Remove OsisERP
+#                --update      Update existing installation
 #  REQUIREMENTS: Ubuntu 20.04+ / Debian 11+
 #        AUTHOR: OSIS (Open System & Innovation Solution)
 #       WEBSITE: https://globalosis.com
@@ -19,6 +22,43 @@
 #===============================================================================
 
 set -e
+
+#===============================================================================
+# COMMAND LINE ARGUMENTS
+#===============================================================================
+AUTO_MODE=false
+SHOW_HELP=false
+DO_UNINSTALL=false
+DO_UPDATE=false
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --auto|-y|--yes)
+            AUTO_MODE=true
+            shift
+            ;;
+        --help|-h)
+            SHOW_HELP=true
+            shift
+            ;;
+        --uninstall)
+            DO_UNINSTALL=true
+            shift
+            ;;
+        --update)
+            DO_UPDATE=true
+            shift
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+# Detect if running non-interactively (piped)
+if [[ ! -t 0 ]]; then
+    AUTO_MODE=true
+fi
 
 #===============================================================================
 # CONFIGURATION
@@ -89,6 +129,10 @@ log_step() {
 }
 
 confirm() {
+    if [[ "$AUTO_MODE" == true ]]; then
+        log_info "Auto-accepting: $1"
+        return 0
+    fi
     read -p "$(echo -e ${YELLOW}"$1 [y/N]: "${NC})" response
     case "$response" in
         [yY][eE][sS]|[yY]) return 0 ;;
@@ -177,6 +221,20 @@ analyze_system() {
 
 get_user_count() {
     log_step "Performance Configuration"
+    
+    if [[ "$AUTO_MODE" == true ]]; then
+        # Auto-detect based on RAM
+        if [[ $TOTAL_RAM_GB -ge 8 ]]; then
+            USER_SCALE="large"
+        elif [[ $TOTAL_RAM_GB -ge 4 ]]; then
+            USER_SCALE="medium"
+        else
+            USER_SCALE="small"
+        fi
+        log_info "Auto-selected: $USER_SCALE scale (based on ${TOTAL_RAM_GB}GB RAM)"
+        return
+    fi
+    
     echo ""
     echo -e "${WHITE}How many concurrent users will use OsisERP?${NC}"
     echo -e "  ${CYAN}1)${NC} Small    (1-10 users)     - Minimal resources"
@@ -282,6 +340,18 @@ calculate_performance_settings() {
 
 select_modules() {
     log_step "Module Package Selection"
+    
+    # Initialize arrays
+    SELECTED_PACKAGES=("core")
+    
+    if [[ "$AUTO_MODE" == true ]]; then
+        # In auto mode, install all packages
+        SELECTED_PACKAGES=("core" "accounting" "hr_payroll" "manufacturing" "inventory" "sales_crm" "purchase" "project" "syscohada")
+        log_info "Auto-mode: Installing ALL packages"
+        log_info "Selected packages: ${SELECTED_PACKAGES[*]}"
+        return
+    fi
+    
     echo ""
     echo -e "${WHITE}Select the OCA module packages to install:${NC}"
     echo -e "${CYAN}(Core modules are always installed)${NC}"
@@ -307,9 +377,6 @@ select_modules() {
     echo ""
     
     read -p "$(echo -e ${YELLOW}"Enter package numbers (comma-separated, e.g., 1,2,3): "${NC})" module_choices
-    
-    # Initialize arrays
-    SELECTED_PACKAGES=("core")
     
     if [[ "$module_choices" == "9" ]]; then
         SELECTED_PACKAGES=("core" "accounting" "hr_payroll" "manufacturing" "inventory" "sales_crm" "purchase" "project" "syscohada")
@@ -340,6 +407,16 @@ select_modules() {
 
 configure_domain() {
     log_step "Domain Configuration"
+    
+    if [[ "$AUTO_MODE" == true ]]; then
+        # In auto mode, use IP-only access
+        DOMAIN_NAME="_"
+        USE_SSL=false
+        log_info "Auto-mode: Using IP-only access (no domain)"
+        log_info "Domain: $DOMAIN_NAME | SSL: $USE_SSL"
+        return
+    fi
+    
     echo ""
     read -p "$(echo -e ${YELLOW}"Enter your domain name (or press Enter for IP-only access): "${NC})" DOMAIN_NAME
     
@@ -364,12 +441,27 @@ configure_domain() {
 
 configure_database() {
     log_step "Database Configuration"
-    echo ""
     
     # Generate random passwords
     DB_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9' | head -c 16)
     ADMIN_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9' | head -c 16)
     
+    if [[ "$AUTO_MODE" == true ]]; then
+        # Use defaults in auto mode
+        DB_NAME="osiserp"
+        DB_USER="odoo"
+        log_info "Auto-mode: Using default database settings"
+        log_info "Database: $DB_NAME | User: $DB_USER"
+        echo ""
+        echo -e "${WHITE}Generated secure passwords:${NC}"
+        echo -e "  Database Password: ${GREEN}$DB_PASSWORD${NC}"
+        echo -e "  Odoo Admin Password: ${GREEN}$ADMIN_PASSWORD${NC}"
+        echo ""
+        log_warning "Credentials will be stored in /root/.osiserp_credentials"
+        return
+    fi
+    
+    echo ""
     read -p "$(echo -e ${YELLOW}"Database name [osiserp]: "${NC})" DB_NAME
     DB_NAME=${DB_NAME:-osiserp}
     
