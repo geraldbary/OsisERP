@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- os_web_theme/static/src/xml/home_menu.xml -->
+<!-- OsisERP Home Menu OWL Templates -->
+<templates xml:space="preserve">
+
+    <!-- =========================================================================
+         OSISERP HOME MENU - Main Container
+         ========================================================================= -->
+    <t t-name="os_web_theme.HomeMenu" t-inherit="web.HomeMenu" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_home_menu')]" position="attributes">
+            <attribute name="class">o_home_menu osiserp_home_menu</attribute>
+        </xpath>
+    </t>
+
+    <!-- =========================================================================
+         OSISERP HOME MENU - Complete Override Template
+         ========================================================================= -->
+    <t t-name="os_web_theme.OsisHomeMenu">
+        <div class="osiserp_home_menu_wrapper">
+            <!-- Background gradient overlay -->
+            <div class="osiserp_home_bg"/>
+            
+            <!-- Main content container -->
+            <div class="osiserp_home_content">
+                <!-- Header with branding -->
+                <div class="osiserp_home_header">
+                    <div class="osiserp_brand">
+                        <img t-att-src="props.logoUrl || '/os_web_theme/static/src/img/osiserp_logo_white.svg'" 
+                             alt="OsisERP" 
+                             class="osiserp_logo"/>
+                        <span class="osiserp_tagline">Open System &amp; Innovation Solution</span>
+                    </div>
+                </div>
+
+                <!-- Search bar -->
+                <div class="osiserp_search_container">
+                    <div class="osiserp_search_wrapper">
+                        <i class="fa fa-search osiserp_search_icon"/>
+                        <input type="text" 
+                               class="osiserp_search_input" 
+                               t-att-value="state.searchQuery"
+                               t-on-input="onSearchInput"
+                               t-on-keydown="onSearchKeydown"
+                               placeholder="Search apps..."
+                               t-ref="searchInput"/>
+                        <t t-if="state.searchQuery">
+                            <button class="osiserp_search_clear" t-on-click="clearSearch">
+                                <i class="fa fa-times"/>
+                            </button>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- Category filters (optional) -->
+                <t t-if="state.showCategories and categories.length > 0">
+                    <div class="osiserp_categories">
+                        <button t-attf-class="osiserp_category_btn {{ state.activeCategory === 'all' ? 'active' : '' }}"
+                                t-on-click="() => this.filterByCategory('all')">
+                            All Apps
+                        </button>
+                        <t t-foreach="categories" t-as="category" t-key="category.id">
+                            <button t-attf-class="osiserp_category_btn {{ state.activeCategory === category.id ? 'active' : '' }}"
+                                    t-on-click="() => this.filterByCategory(category.id)">
+                                <t t-esc="category.name"/>
+                            </button>
+                        </t>
+                    </div>
+                </t>
+
+                <!-- Apps grid -->
+                <div class="osiserp_apps_grid">
+                    <t t-foreach="filteredApps" t-as="app" t-key="app.id">
+                        <div t-attf-class="osiserp_app_tile {{ state.animateIn ? 'animate-in' : '' }}"
+                             t-att-style="'animation-delay: ' + (app_index * 0.05) + 's'"
+                             t-on-click="() => this.openApp(app)"
+                             t-on-keydown="(ev) => this.onAppKeydown(ev, app)"
+                             tabindex="0"
+                             role="button"
+                             t-att-aria-label="app.label">
+                            
+                            <!-- App icon container -->
+                            <div class="osiserp_app_icon_wrapper">
+                                <div class="osiserp_app_icon_bg"/>
+                                <t t-if="app.webIconData">
+                                    <img t-att-src="'data:image/png;base64,' + app.webIconData" 
+                                         t-att-alt="app.label"
+                                         class="osiserp_app_icon"/>
+                                </t>
+                                <t t-elif="app.webIcon">
+                                    <img t-att-src="app.webIcon" 
+                                         t-att-alt="app.label"
+                                         class="osiserp_app_icon"/>
+                                </t>
+                                <t t-else="">
+                                    <div class="osiserp_app_icon_placeholder">
+                                        <i t-att-class="'fa ' + (app.icon || 'fa-cube')"/>
+                                    </div>
+                                </t>
+                            </div>
+                            
+                            <!-- App name -->
+                            <div class="osiserp_app_name">
+                                <t t-esc="app.label"/>
+                            </div>
+                            
+                            <!-- Optional: App description -->
+                            <t t-if="app.description">
+                                <div class="osiserp_app_desc">
+                                    <t t-esc="app.description"/>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+
+                <!-- Empty state -->
+                <t t-if="filteredApps.length === 0">
+                    <div class="osiserp_empty_state">
+                        <i class="fa fa-search fa-3x"/>
+                        <p>No apps found matching "<t t-esc="state.searchQuery"/>"</p>
+                    </div>
+                </t>
+
+                <!-- Footer -->
+                <div class="osiserp_home_footer">
+                    <span>Powered by OsisERP</span>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- =========================================================================
+         OSISERP APPS MENU LAUNCHER (Navbar grid icon)
+         ========================================================================= -->
+    <t t-name="os_web_theme.AppsMenuLauncher" t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_navbar_apps_menu')]" position="attributes">
+            <attribute name="class">o_navbar_apps_menu osiserp_apps_launcher</attribute>
+        </xpath>
+    </t>
+
+</templates>

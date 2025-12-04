@@ -1,0 +1,46 @@
+// os_web_theme/static/src/scss/_primary_variables.scss
+// Override Odoo's primary variables BEFORE they are used
+
+// =============================================================================
+// OSISERP BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD;      // Osis Blue
+$osis-secondary: #F2A900;    // Osis Gold
+$osis-dark: #1A1F25;         // Midnight Charcoal
+$osis-light: #F7F9FB;        // Cloud White
+$osis-accent: #0DBF6F;       // Emerald Tech Green
+
+// =============================================================================
+// OVERRIDE ODOO PRIMARY VARIABLES
+// =============================================================================
+
+// Main brand color (replaces Odoo purple)
+$o-brand-odoo: $osis-primary;
+$o-brand-primary: $osis-primary;
+
+// Enterprise/Community color
+$o-enterprise-color: $osis-primary;
+$o-community-color: $osis-primary;
+
+// Action colors
+$o-action: $osis-primary;
+$o-action-hover: darken($osis-primary, 8%);
+
+// Navbar
+$o-navbar-background: $osis-dark;
+$o-navbar-text: #ffffff;
+$o-navbar-text-hover: #ffffff;
+
+// Main UI colors
+$o-main-bg-color: $osis-light;
+$o-view-background-color: #ffffff;
+
+// Success/Warning/Danger
+$o-success: $osis-accent;
+$o-warning: $osis-secondary;
+$o-danger: #dc3545;
+$o-info: $osis-primary;
+
+// Links
+$o-link-color: $osis-primary;
+$o-link-hover-color: darken($osis-primary, 10%);

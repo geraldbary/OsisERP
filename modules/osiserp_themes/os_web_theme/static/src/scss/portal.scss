@@ -1,0 +1,230 @@
+// os_web_theme/static/src/scss/portal.scss
+// OsisERP Portal/Frontend Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// PORTAL NAVBAR
+// =============================================================================
+.o_portal_navbar,
+header.o_header {
+    background-color: $osis-dark !important;
+    
+    .navbar-brand {
+        img {
+            max-height: 36px;
+        }
+    }
+    
+    .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 500;
+        
+        &:hover {
+            color: #ffffff !important;
+        }
+    }
+    
+    .dropdown-menu {
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+}
+
+// =============================================================================
+// PORTAL CONTENT
+// =============================================================================
+.o_portal {
+    background-color: $osis-light;
+    
+    // Portal sidebar
+    .o_portal_sidebar {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+        padding: 20px;
+        
+        .nav-link {
+            color: #4b5563;
+            border-radius: 8px;
+            padding: 10px 16px;
+            
+            &:hover {
+                background-color: rgba($osis-primary, 0.08);
+                color: $osis-primary;
+            }
+            
+            &.active {
+                background-color: rgba($osis-primary, 0.15);
+                color: $osis-primary;
+                font-weight: 600;
+            }
+        }
+    }
+    
+    // Portal cards
+    .card {
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+        
+        .card-header {
+            background-color: $osis-light;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            font-weight: 600;
+            color: $osis-dark;
+        }
+    }
+    
+    // Portal tables
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+        
+        thead {
+            background-color: $osis-dark;
+            
+            th {
+                color: #ffffff;
+                font-weight: 600;
+                border: none;
+            }
+        }
+        
+        tbody {
+            tr:hover {
+                background-color: rgba($osis-primary, 0.04);
+            }
+        }
+    }
+    
+    // Portal buttons
+    .btn-primary {
+        background-color: $osis-primary;
+        border-color: $osis-primary;
+        
+        &:hover {
+            background-color: darken($osis-primary, 8%);
+        }
+    }
+}
+
+// =============================================================================
+// PORTAL BREADCRUMB
+// =============================================================================
+.o_portal_breadcrumbs {
+    background-color: transparent;
+    
+    .breadcrumb {
+        background-color: transparent;
+        
+        .breadcrumb-item {
+            a {
+                color: $osis-primary;
+            }
+            
+            &.active {
+                color: $osis-dark;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// PORTAL DOCUMENTS
+// =============================================================================
+.o_portal_docs {
+    .o_portal_doc_row {
+        background-color: #ffffff;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        padding: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        transition: all 0.2s ease;
+        
+        &:hover {
+            box-shadow: 0 4px 12px rgba(26, 31, 37, 0.1);
+            border-color: $osis-primary;
+        }
+    }
+}
+
+// =============================================================================
+// PORTAL CHATTER
+// =============================================================================
+.o_portal_chatter {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+    
+    .o_portal_chatter_message {
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+        background-color: $osis-light;
+    }
+    
+    .o_portal_chatter_composer {
+        textarea {
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            
+            &:focus {
+                border-color: $osis-primary;
+                box-shadow: 0 0 0 3px rgba($osis-primary, 0.15);
+            }
+        }
+    }
+}
+
+// =============================================================================
+// PORTAL FOOTER
+// =============================================================================
+footer.o_footer {
+    background-color: $osis-dark;
+    color: rgba(255, 255, 255, 0.8);
+    
+    a {
+        color: rgba(255, 255, 255, 0.8);
+        
+        &:hover {
+            color: #ffffff;
+        }
+    }
+    
+    .o_footer_copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+// =============================================================================
+// WEBSITE PAGES (if website module installed)
+// =============================================================================
+.o_website {
+    // Hero sections
+    .s_banner,
+    .s_cover {
+        .btn-primary {
+            background-color: $osis-primary;
+            border-color: $osis-primary;
+        }
+    }
+    
+    // Call to action
+    .s_cta {
+        .btn-primary {
+            background-color: $osis-primary;
+        }
+    }
+}

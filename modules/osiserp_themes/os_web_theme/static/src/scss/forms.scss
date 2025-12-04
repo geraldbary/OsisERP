@@ -1,0 +1,199 @@
+// os_web_theme/static/src/scss/forms.scss
+// OsisERP Form View Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// FORM VIEW
+// =============================================================================
+.o_form_view {
+    background-color: $osis-light;
+
+    .o_form_sheet_bg {
+        background: transparent;
+        padding: 16px 0;
+    }
+
+    .o_form_sheet {
+        border-radius: 16px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(26, 31, 37, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 24px 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    // Section separators
+    .o_horizontal_separator {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: $osis-primary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid rgba($osis-primary, 0.2);
+        padding-bottom: 8px;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    // Labels
+    label,
+    .o_form_label {
+        font-weight: 500;
+        color: #4b5563;
+        font-size: 0.875rem;
+    }
+
+    // Input fields
+    input.o_input,
+    select.o_input,
+    textarea.o_input,
+    .o_field_widget input,
+    .o_field_widget select,
+    .o_field_widget textarea {
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        padding: 0.5rem 0.75rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        
+        &:focus {
+            border-color: $osis-primary;
+            box-shadow: 0 0 0 3px rgba($osis-primary, 0.15);
+            outline: none;
+        }
+        
+        &:hover:not(:focus) {
+            border-color: #d1d5db;
+        }
+        
+        &[readonly],
+        &:disabled {
+            background-color: #f9fafb;
+            color: #6b7280;
+        }
+    }
+
+    // Notebook (tabs)
+    .o_notebook {
+        .nav-tabs {
+            border-bottom: 2px solid #e5e7eb;
+            
+            .nav-link {
+                font-weight: 500;
+                color: #6b7280;
+                border: none;
+                padding: 0.75rem 1.25rem;
+                margin-bottom: -2px;
+                transition: all 0.2s ease;
+                
+                &:hover {
+                    color: $osis-primary;
+                    background-color: transparent;
+                }
+                
+                &.active {
+                    color: $osis-primary;
+                    background-color: transparent;
+                    border-bottom: 2px solid $osis-primary;
+                }
+            }
+        }
+        
+        .tab-content {
+            padding-top: 16px;
+        }
+    }
+
+    // Chatter
+    .o_chatter {
+        background-color: $osis-light;
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 24px;
+    }
+
+    // Status bar
+    .o_statusbar_status {
+        .o_arrow_button {
+            font-weight: 500;
+            
+            &.o_arrow_button_current {
+                background-color: $osis-primary;
+                color: #ffffff;
+                
+                &::before,
+                &::after {
+                    border-left-color: $osis-primary;
+                }
+            }
+            
+            &.btn-secondary.disabled {
+                background-color: #e5e7eb;
+                color: #6b7280;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// FIELD WIDGETS
+// =============================================================================
+
+// Many2one fields
+.o_field_many2one {
+    .o_external_button {
+        color: $osis-primary;
+        
+        &:hover {
+            color: darken($osis-primary, 10%);
+        }
+    }
+}
+
+// Tags (many2many)
+.o_field_many2many_tags {
+    .badge {
+        border-radius: 6px;
+        font-weight: 500;
+        padding: 0.35rem 0.6rem;
+    }
+}
+
+// Boolean toggle
+.o_field_boolean {
+    .form-check-input:checked {
+        background-color: $osis-primary;
+        border-color: $osis-primary;
+    }
+}
+
+// Selection field
+.o_field_selection {
+    select {
+        border-radius: 8px;
+    }
+}
+
+// Monetary field
+.o_field_monetary {
+    input {
+        font-weight: 500;
+    }
+}
+
+// Required field indicator
+.o_form_required {
+    .o_form_label::after {
+        content: " *";
+        color: #dc3545;
+    }
+}

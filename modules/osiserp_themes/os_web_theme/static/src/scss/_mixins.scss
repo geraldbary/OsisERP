@@ -1,0 +1,67 @@
+// os_web_theme/static/src/scss/_mixins.scss
+// Reusable mixins for OsisERP theme
+
+// =============================================================================
+// OSISERP MIXINS
+// =============================================================================
+
+@mixin osis-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(26, 31, 37, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+@mixin osis-card-hover {
+    box-shadow: 0 8px 24px rgba(26, 31, 37, 0.12);
+    border-color: #004AAD;
+}
+
+@mixin osis-button-primary {
+    background-color: #004AAD;
+    border-color: #004AAD;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    
+    &:hover, &:focus {
+        background-color: darken(#004AAD, 8%);
+        border-color: darken(#004AAD, 10%);
+        box-shadow: 0 4px 12px rgba(0, 74, 173, 0.3);
+    }
+}
+
+@mixin osis-button-secondary {
+    background-color: #F2A900;
+    border-color: #F2A900;
+    color: #1A1F25;
+    font-weight: 500;
+    border-radius: 8px;
+    
+    &:hover, &:focus {
+        background-color: darken(#F2A900, 8%);
+        border-color: darken(#F2A900, 10%);
+    }
+}
+
+@mixin osis-input {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    
+    &:focus {
+        border-color: #004AAD;
+        box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.15);
+        outline: none;
+    }
+}
+
+@mixin osis-section-title {
+    font-weight: 600;
+    color: #004AAD;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}

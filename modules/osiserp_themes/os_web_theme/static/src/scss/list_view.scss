@@ -1,0 +1,178 @@
+// os_web_theme/static/src/scss/list_view.scss
+// OsisERP List/Tree View Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// LIST VIEW
+// =============================================================================
+.o_list_view {
+    background-color: $osis-light;
+
+    // Table styling
+    .o_list_table {
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+
+        // Table header
+        thead {
+            background-color: $osis-dark;
+            
+            th {
+                color: #ffffff !important;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                padding: 12px 16px;
+                border-bottom: none;
+                
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+                
+                // Sort indicator
+                .o_column_sortable {
+                    &::after {
+                        color: rgba(255, 255, 255, 0.6);
+                    }
+                }
+            }
+        }
+
+        // Table body
+        tbody {
+            tr {
+                transition: background-color 0.15s ease;
+                
+                &:hover {
+                    background-color: rgba($osis-primary, 0.04);
+                }
+                
+                &.o_data_row_selected {
+                    background-color: rgba($osis-primary, 0.1);
+                }
+                
+                td {
+                    padding: 10px 16px;
+                    border-bottom: 1px solid #f3f4f6;
+                    color: #4b5563;
+                    font-size: 0.9rem;
+                    vertical-align: middle;
+                    
+                    // First column (usually name/title)
+                    &:first-child {
+                        font-weight: 500;
+                        color: $osis-dark;
+                    }
+                }
+                
+                // Alternating row colors (subtle)
+                &:nth-child(even) {
+                    background-color: rgba(0, 0, 0, 0.01);
+                }
+            }
+        }
+
+        // Footer
+        tfoot {
+            background-color: #f9fafb;
+            
+            td {
+                font-weight: 600;
+                color: $osis-dark;
+                border-top: 2px solid #e5e7eb;
+            }
+        }
+    }
+
+    // Checkbox styling
+    .o_list_record_selector {
+        .form-check-input:checked {
+            background-color: $osis-primary;
+            border-color: $osis-primary;
+        }
+    }
+
+    // Editable cells
+    .o_field_cell.o_edit_mode {
+        input,
+        select {
+            border-radius: 6px;
+            border: 1px solid $osis-primary;
+            box-shadow: 0 0 0 3px rgba($osis-primary, 0.15);
+        }
+    }
+
+    // Optional columns button
+    .o_optional_columns_dropdown {
+        .dropdown-toggle {
+            color: #6b7280;
+            
+            &:hover {
+                color: $osis-primary;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// LIST VIEW BUTTONS
+// =============================================================================
+.o_list_buttons {
+    .btn-primary {
+        background-color: $osis-primary;
+        border-color: $osis-primary;
+    }
+}
+
+// =============================================================================
+// GROUPED LIST VIEW
+// =============================================================================
+.o_list_view {
+    .o_group_header {
+        background-color: rgba($osis-primary, 0.08);
+        font-weight: 600;
+        color: $osis-dark;
+        
+        &:hover {
+            background-color: rgba($osis-primary, 0.12);
+        }
+        
+        .o_group_name {
+            color: $osis-primary;
+        }
+    }
+}
+
+// =============================================================================
+// EMPTY LIST STATE
+// =============================================================================
+.o_view_nocontent {
+    .o_nocontent_help {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 48px;
+        box-shadow: 0 4px 12px rgba(26, 31, 37, 0.06);
+        
+        .o_nocontent_help_icon {
+            color: $osis-primary;
+            opacity: 0.6;
+        }
+        
+        p {
+            color: #6b7280;
+        }
+    }
+}

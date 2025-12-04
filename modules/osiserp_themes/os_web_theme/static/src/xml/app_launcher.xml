@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- os_web_theme/static/src/xml/app_launcher.xml -->
+<!-- OsisERP Navbar Extensions - Enterprise-style Home Menu -->
+<templates xml:space="preserve">
+
+    <!-- =========================================================================
+         OSISERP NAVBAR - Enterprise-style Home Menu Toggle
+         Replaces dropdown with single toggle button like Odoo Enterprise
+         ========================================================================= -->
+    <t t-name="os_web_theme.NavBar" t-inherit="web.NavBar" t-inherit-mode="extension">
+        <!-- Replace the Apps Menu dropdown with Enterprise-style toggle -->
+        <xpath expr="//t[@t-call='web.NavBar.AppsMenu']" position="replace">
+            <div class="o_menu_toggle osis-home-toggle" 
+                 t-att-title="osisHomeTitle"
+                 t-att-class="{'osis-on-home': osisHomeState.showHomeMenu}"
+                 t-on-click="onOsisHomeToggle"
+                 data-hotkey="h">
+                <!-- On Home Menu: show right arrow (go to app) -->
+                <i t-if="osisHomeState.showHomeMenu" class="fa fa-chevron-right osis-nav-arrow"></i>
+                <!-- In App: show app icon, arrow on hover -->
+                <t t-else="">
+                    <img t-if="currentApp and currentApp.webIconData" 
+                         t-att-src="currentApp.webIconData" 
+                         class="osis-app-icon"/>
+                    <i t-else="" class="oi oi-apps"></i>
+                    <i class="fa fa-chevron-left osis-nav-arrow osis-hover-arrow"></i>
+                </t>
+            </div>
+        </xpath>
+        
+        <!-- Add Home Menu overlay after navbar -->
+        <xpath expr="//nav[hasclass('o_main_navbar')]" position="after">
+            <div t-if="osisHomeState.showHomeMenu" 
+                 class="o_home_menu osiserp_home_menu"
+                 tabindex="0"
+                 t-on-keydown="onOsisHomeKeydown">
+                
+                <!-- Top Bar with Back Button and Systray -->
+                <div class="osis_home_topbar">
+                    <!-- Back to App Button (left side) -->
+                    <div class="osis_home_back_btn" t-on-click="onOsisHomeToggle" title="Back to App">
+                        <i class="oi oi-chevron-right"></i>
+                    </div>
+                    
+                    <!-- Systray (right side) -->
+                    <div class="osis_home_systray">
+                        <t t-foreach="systrayItems" t-as="item" t-key="item.key">
+                            <ErrorHandler onError="error => this.handleItemError(error, item)">
+                                <t t-component="item.Component" t-props="item.props"/>
+                            </ErrorHandler>
+                        </t>
+                    </div>
+                </div>
+                
+                <div class="o_home_menu_scrollable">
+                    <!-- Search Bar -->
+                    <div class="o_home_menu_search">
+                        <input type="text" 
+                               placeholder="Search apps..."
+                               class="o_home_menu_search_input"
+                               t-on-input="onOsisSearchInput"
+                               t-on-keydown="onOsisSearchKeydown"/>
+                    </div>
+                    
+                    <!-- Apps Grid -->
+                    <div class="o_apps">
+                        <t t-foreach="osisFilteredApps" t-as="app" t-key="app.id">
+                            <a class="o_app" 
+                               t-on-click="() => this.onOsisAppClick(app)"
+                               t-att-data-menu-xmlid="app.xmlid"
+                               tabindex="0">
+                                <div class="o_app_icon">
+                                    <img t-if="app.webIconData" 
+                                         t-att-src="app.webIconData"/>
+                                    <i t-else="" class="fa fa-cube"></i>
+                                </div>
+                                <div class="o_app_name" t-esc="app.name"/>
+                            </a>
+                        </t>
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div t-if="osisFilteredApps.length === 0" class="o_home_menu_empty">
+                        <i class="fa fa-search"></i>
+                        <p>No apps found</p>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

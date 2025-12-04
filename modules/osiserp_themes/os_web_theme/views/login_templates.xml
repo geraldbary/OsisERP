@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- os_web_theme/views/login_templates.xml -->
+<odoo>
+    <data>
+        <!-- 
+            OsisERP Login Page Customization
+            
+            Note: Login page styling is handled entirely via SCSS.
+            The login.scss file targets standard Odoo login classes.
+            No template inheritance needed - this avoids xpath compatibility issues.
+        -->
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- osiserp_syscohada_reports/wizard/trial_balance_wizard_view.xml -->
+<odoo>
+    <!-- Extend Trial Balance Wizard with SYSCOHADA options -->
+    <record id="trial_balance_wizard_syscohada" model="ir.ui.view">
+        <field name="name">trial.balance.wizard.syscohada</field>
+        <field name="model">trial.balance.report.wizard</field>
+        <field name="inherit_id" ref="account_financial_report.trial_balance_wizard"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            
+            <!-- Add SYSCOHADA Format section -->
+            <xpath expr="//field[@name='show_partner_details']" position="before">
+                <separator string="Format SYSCOHADA"/>
+                <field name="balance_layout" widget="radio"/>
+                <field name="show_account_ref"/>
+                <field name="compare_previous_year"/>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>

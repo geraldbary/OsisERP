@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- osiserp_syscohada_reports/report/general_ledger_template.xml -->
+<odoo>
+    <!-- Override the filter display to add SYSCOHADA header and toolbar -->
+    <template id="report_general_ledger_filters_syscohada" 
+              inherit_id="account_financial_report.report_general_ledger_filters">
+        <xpath expr="//div[hasclass('act_as_table')]" position="before">
+            <!-- SYSCOHADA Report Header -->
+            <div class="syscohada-report-header">
+                <div class="report-company" t-out="company_name"/>
+                <h3 class="report-title">GRAND LIVRE</h3>
+                <div class="report-subtitle">
+                    Période du <span t-out="date_from" t-options="{'widget': 'date'}"/>
+                    au <span t-out="date_to" t-options="{'widget': 'date'}"/>
+                </div>
+                <div class="report-currency">
+                    Devise: <t t-out="currency_name"/>
+                </div>
+            </div>
+            
+            <!-- SYSCOHADA Toolbar -->
+            <div class="syscohada-toolbar no-print">
+                <div class="toolbar-section">
+                    <span class="toolbar-label">Période</span>
+                    <span class="toolbar-value">
+                        <t t-out="date_from" t-options="{'widget': 'date'}"/> - <t t-out="date_to" t-options="{'widget': 'date'}"/>
+                    </span>
+                </div>
+                <div class="toolbar-section">
+                    <span class="toolbar-label">Écritures</span>
+                    <span class="toolbar-badge">
+                        <t t-if="only_posted_moves">Validées uniquement</t>
+                        <t t-else="">Toutes les écritures</t>
+                    </span>
+                </div>
+                <div class="toolbar-section">
+                    <span class="toolbar-label">Comptes à 0</span>
+                    <span class="toolbar-badge">
+                        <t t-if="hide_account_at_0">Masqués</t>
+                        <t t-else="">Affichés</t>
+                    </span>
+                </div>
+                <div class="toolbar-section">
+                    <span class="toolbar-label">Centralisation</span>
+                    <span class="toolbar-badge">
+                        <t t-if="centralize">Oui</t>
+                        <t t-else="">Non</t>
+                    </span>
+                </div>
+            </div>
+        </xpath>
+        
+        <!-- Hide original filter table, use toolbar instead -->
+        <xpath expr="//div[hasclass('act_as_table')]" position="attributes">
+            <attribute name="class">act_as_table data_table no-print</attribute>
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+
+    <!-- SYSCOHADA Summary row styling -->
+    <template id="report_general_ledger_account_summary_syscohada"
+              inherit_id="account_financial_report.report_general_ledger_ending_cumul">
+        <xpath expr="//div[hasclass('act_as_row')][hasclass('labels')]" position="attributes">
+            <attribute name="class">act_as_row labels syscohada-total-row</attribute>
+        </xpath>
+    </template>
+</odoo>

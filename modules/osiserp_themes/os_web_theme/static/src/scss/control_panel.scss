@@ -1,0 +1,216 @@
+// os_web_theme/static/src/scss/control_panel.scss
+// OsisERP Control Panel Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// CONTROL PANEL
+// =============================================================================
+.o_control_panel {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px 16px;
+    
+    // Breadcrumb
+    .o_breadcrumb {
+        .o_back_button {
+            color: $osis-primary;
+            
+            &:hover {
+                color: darken($osis-primary, 10%);
+            }
+        }
+        
+        .o_breadcrumb_item {
+            font-family: 'Poppins', sans-serif;
+            
+            &.active {
+                font-weight: 600;
+                color: $osis-dark;
+            }
+            
+            a {
+                color: $osis-primary;
+                
+                &:hover {
+                    color: darken($osis-primary, 10%);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    // Search bar
+    .o_searchview {
+        background-color: $osis-light;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        
+        &:focus-within {
+            border-color: $osis-primary;
+            box-shadow: 0 0 0 3px rgba($osis-primary, 0.15);
+        }
+        
+        .o_searchview_input {
+            background-color: transparent;
+            
+            &::placeholder {
+                color: #9ca3af;
+            }
+        }
+        
+        .o_searchview_facet {
+            background-color: rgba($osis-primary, 0.1);
+            border-radius: 6px;
+            
+            .o_searchview_facet_label {
+                background-color: $osis-primary;
+                color: #ffffff;
+                border-radius: 6px 0 0 6px;
+            }
+        }
+    }
+
+    // View switcher buttons
+    .o_cp_switch_buttons {
+        .btn {
+            color: #6b7280;
+            border-radius: 6px;
+            padding: 0.4rem 0.6rem;
+            
+            &:hover {
+                color: $osis-primary;
+                background-color: rgba($osis-primary, 0.1);
+            }
+            
+            &.active {
+                color: $osis-primary;
+                background-color: rgba($osis-primary, 0.15);
+            }
+        }
+    }
+
+    // Action buttons
+    .o_cp_action_menus {
+        .dropdown-toggle {
+            color: #6b7280;
+            
+            &:hover {
+                color: $osis-primary;
+            }
+        }
+    }
+
+    // Pager
+    .o_pager {
+        .o_pager_counter {
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .o_pager_previous,
+        .o_pager_next {
+            color: #6b7280;
+            border-radius: 6px;
+            
+            &:hover:not(:disabled) {
+                color: $osis-primary;
+                background-color: rgba($osis-primary, 0.1);
+            }
+            
+            &:disabled {
+                opacity: 0.4;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// SEARCH PANEL (Filters sidebar)
+// =============================================================================
+.o_search_panel {
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    
+    .o_search_panel_section {
+        .o_search_panel_section_header {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: $osis-dark;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        
+        .o_search_panel_category_value,
+        .o_search_panel_filter_value {
+            border-radius: 6px;
+            padding: 6px 12px;
+            margin: 2px 0;
+            transition: all 0.15s ease;
+            
+            &:hover {
+                background-color: rgba($osis-primary, 0.08);
+            }
+            
+            &.active {
+                background-color: rgba($osis-primary, 0.15);
+                color: $osis-primary;
+                font-weight: 500;
+            }
+            
+            .o_search_panel_label_title {
+                color: #4b5563;
+            }
+            
+            .o_search_panel_counter {
+                background-color: rgba($osis-primary, 0.1);
+                color: $osis-primary;
+                border-radius: 10px;
+                padding: 2px 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// FILTER MENU
+// =============================================================================
+.o_filter_menu,
+.o_group_by_menu,
+.o_favorite_menu {
+    .dropdown-menu {
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(26, 31, 37, 0.15);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 8px;
+        
+        .dropdown-item {
+            border-radius: 6px;
+            padding: 8px 12px;
+            
+            &:hover {
+                background-color: rgba($osis-primary, 0.08);
+            }
+            
+            &.selected {
+                background-color: rgba($osis-primary, 0.15);
+                color: $osis-primary;
+            }
+        }
+        
+        .dropdown-divider {
+            border-color: #e5e7eb;
+        }
+    }
+}

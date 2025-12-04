@@ -1,0 +1,135 @@
+# =============================================================================
+# OsisERP Docker Compose Template
+# =============================================================================
+# Replace variables:
+#   ${DB_USER}, ${DB_PASSWORD}
+#   ${DATA_DIR}, ${LOG_DIR}
+#   ${PG_SHARED_BUFFERS}, ${PG_WORK_MEM}, ${PG_MAINTENANCE_WORK_MEM}, ${PG_EFFECTIVE_CACHE}
+# =============================================================================
+
+name: osiserp
+
+services:
+  # ===========================================================================
+  # Odoo Application Server
+  # ===========================================================================
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: osiserp:18.0
+    container_name: osiserp-odoo
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8069:8069"   # Web interface (localhost only, Nginx handles external)
+      - "127.0.0.1:8072:8072"   # Longpolling/WebSocket
+    volumes:
+      - ${DATA_DIR}/odoo-data:/var/lib/odoo
+      - ./odoo.conf:/etc/odoo/odoo.conf:ro
+      - ./custom/addons:/mnt/custom-addons:ro
+      - ${LOG_DIR}:/var/log/odoo
+    environment:
+      - HOST=db
+      - PORT=5432
+      - USER=${DB_USER}
+      - PASSWORD=${DB_PASSWORD}
+    restart: unless-stopped
+    networks:
+      - osiserp-network
+    # Resource limits (adjust based on server capacity)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2'
+    #       memory: 4G
+    #     reservations:
+    #       cpus: '0.5'
+    #       memory: 1G
+
+  # ===========================================================================
+  # PostgreSQL Database
+  # ===========================================================================
+  db:
+    image: postgres:16-alpine
+    container_name: osiserp-db
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ${DATA_DIR}/postgres-data:/var/lib/postgresql/data/pgdata
+    restart: unless-stopped
+    networks:
+      - osiserp-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    # PostgreSQL performance tuning
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_buffers=${PG_SHARED_BUFFERS}"
+      - "-c"
+      - "work_mem=${PG_WORK_MEM}"
+      - "-c"
+      - "maintenance_work_mem=${PG_MAINTENANCE_WORK_MEM}"
+      - "-c"
+      - "effective_cache_size=${PG_EFFECTIVE_CACHE}"
+      - "-c"
+      - "random_page_cost=1.1"
+      - "-c"
+      - "effective_io_concurrency=200"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "checkpoint_completion_target=0.9"
+      - "-c"
+      - "wal_buffers=16MB"
+      - "-c"
+      - "default_statistics_target=100"
+
+  # ===========================================================================
+  # Redis Cache (Optional - for session storage)
+  # ===========================================================================
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: osiserp-redis
+  #   restart: unless-stopped
+  #   networks:
+  #     - osiserp-network
+  #   volumes:
+  #     - ${DATA_DIR}/redis-data:/data
+
+  # ===========================================================================
+  # pgAdmin (Optional - for database management)
+  # ===========================================================================
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   container_name: osiserp-pgadmin
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "127.0.0.1:8002:80"
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@example.com
+  #     - PGADMIN_DEFAULT_PASSWORD=admin
+  #   volumes:
+  #     - ${DATA_DIR}/pgadmin-data:/var/lib/pgadmin
+  #   restart: unless-stopped
+  #   networks:
+  #     - osiserp-network
+  #   profiles:
+  #     - tools
+
+volumes:
+  odoo-data:
+  postgres-data:
+
+networks:
+  osiserp-network:
+    name: osiserp-network

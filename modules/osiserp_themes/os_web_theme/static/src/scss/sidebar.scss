@@ -1,0 +1,247 @@
+// os_web_theme/static/src/scss/sidebar.scss
+// OsisERP Sidebar/Menu Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// APP MENU (Home menu / App drawer)
+// =============================================================================
+.o_home_menu {
+    background: linear-gradient(135deg, $osis-dark 0%, darken($osis-dark, 8%) 100%);
+    
+    .o_home_menu_scrollable {
+        .o_app {
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.2s ease;
+            
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                transform: translateY(-4px);
+            }
+            
+            .o_app_icon {
+                border-radius: 16px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+            
+            .o_app_name {
+                color: #ffffff;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                margin-top: 12px;
+            }
+        }
+    }
+    
+    // Search in home menu
+    .o_home_menu_search {
+        .o_home_menu_search_input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.6);
+            }
+            
+            &:focus {
+                background-color: rgba(255, 255, 255, 0.15);
+                border-color: $osis-secondary;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// ACTION MANAGER / MAIN CONTENT AREA
+// =============================================================================
+.o_action_manager {
+    background-color: $osis-light;
+    
+    .o_action {
+        background-color: transparent;
+    }
+}
+
+// =============================================================================
+// SETTINGS SIDEBAR
+// =============================================================================
+.o_base_settings {
+    .o_base_settings_sidebar {
+        background-color: #ffffff;
+        border-right: 1px solid #e5e7eb;
+        
+        .o_base_settings_sidebar_item {
+            border-radius: 8px;
+            margin: 4px 8px;
+            padding: 10px 16px;
+            transition: all 0.15s ease;
+            
+            &:hover {
+                background-color: rgba($osis-primary, 0.08);
+            }
+            
+            &.active {
+                background-color: rgba($osis-primary, 0.15);
+                
+                .o_base_settings_sidebar_item_text {
+                    color: $osis-primary;
+                    font-weight: 600;
+                }
+            }
+            
+            .o_base_settings_sidebar_item_icon {
+                color: $osis-primary;
+            }
+            
+            .o_base_settings_sidebar_item_text {
+                color: #4b5563;
+            }
+        }
+    }
+    
+    // Settings content
+    .o_base_settings_content {
+        background-color: $osis-light;
+        
+        .app_settings_block {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+            
+            h2 {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                color: $osis-primary;
+                border-bottom: 2px solid rgba($osis-primary, 0.2);
+                padding-bottom: 12px;
+                margin-bottom: 20px;
+            }
+            
+            .o_setting_box {
+                border-radius: 8px;
+                padding: 12px;
+                
+                &:hover {
+                    background-color: rgba($osis-primary, 0.03);
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// DISCUSS / MESSAGING SIDEBAR
+// =============================================================================
+.o_mail_discuss {
+    .o_mail_discuss_sidebar {
+        background-color: #ffffff;
+        border-right: 1px solid #e5e7eb;
+        
+        .o_mail_discuss_sidebar_item {
+            border-radius: 8px;
+            margin: 2px 8px;
+            
+            &:hover {
+                background-color: rgba($osis-primary, 0.08);
+            }
+            
+            &.o-active {
+                background-color: rgba($osis-primary, 0.15);
+                
+                .o_mail_discuss_sidebar_item_name {
+                    color: $osis-primary;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// MODAL / DIALOG
+// =============================================================================
+.modal {
+    .modal-content {
+        border-radius: 16px;
+        border: none;
+        box-shadow: 0 16px 48px rgba(26, 31, 37, 0.2);
+        
+        .modal-header {
+            background-color: $osis-dark;
+            color: #ffffff;
+            border-radius: 16px 16px 0 0;
+            padding: 16px 24px;
+            
+            .modal-title {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+            }
+            
+            .btn-close {
+                filter: invert(1);
+            }
+        }
+        
+        .modal-body {
+            padding: 24px;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 16px 24px;
+            
+            .btn-primary {
+                background-color: $osis-primary;
+                border-color: $osis-primary;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// POPOVER
+// =============================================================================
+.popover {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(26, 31, 37, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    
+    .popover-header {
+        background-color: $osis-light;
+        border-bottom: 1px solid #e5e7eb;
+        border-radius: 12px 12px 0 0;
+        font-weight: 600;
+    }
+    
+    .popover-body {
+        padding: 12px 16px;
+    }
+}
+
+// =============================================================================
+// TOOLTIP
+// =============================================================================
+.tooltip {
+    .tooltip-inner {
+        background-color: $osis-dark;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .tooltip-arrow::before {
+        border-top-color: $osis-dark;
+    }
+}

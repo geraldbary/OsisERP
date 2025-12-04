@@ -1,0 +1,185 @@
+// os_web_theme/static/src/scss/buttons.scss
+// OsisERP Button Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// BASE BUTTON STYLES
+// =============================================================================
+.btn {
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+    
+    &:focus {
+        box-shadow: 0 0 0 3px rgba($osis-primary, 0.25);
+    }
+}
+
+// =============================================================================
+// PRIMARY BUTTON
+// =============================================================================
+.btn-primary,
+button.btn-primary,
+a.btn-primary {
+    background-color: $osis-primary !important;
+    border-color: $osis-primary !important;
+    color: #ffffff !important;
+
+    &:hover,
+    &:focus {
+        background-color: darken($osis-primary, 8%) !important;
+        border-color: darken($osis-primary, 10%) !important;
+        box-shadow: 0 4px 12px rgba($osis-primary, 0.35);
+    }
+
+    &:active {
+        background-color: darken($osis-primary, 12%) !important;
+        border-color: darken($osis-primary, 14%) !important;
+        transform: translateY(1px);
+    }
+    
+    &:disabled,
+    &.disabled {
+        background-color: lighten($osis-primary, 20%) !important;
+        border-color: lighten($osis-primary, 20%) !important;
+        opacity: 0.7;
+    }
+}
+
+// =============================================================================
+// SECONDARY BUTTON
+// =============================================================================
+.btn-secondary,
+button.btn-secondary,
+a.btn-secondary {
+    background-color: $osis-secondary !important;
+    border-color: $osis-secondary !important;
+    color: $osis-dark !important;
+
+    &:hover,
+    &:focus {
+        background-color: darken($osis-secondary, 8%) !important;
+        border-color: darken($osis-secondary, 10%) !important;
+        box-shadow: 0 4px 12px rgba($osis-secondary, 0.35);
+    }
+
+    &:active {
+        background-color: darken($osis-secondary, 12%) !important;
+    }
+}
+
+// =============================================================================
+// SUCCESS BUTTON
+// =============================================================================
+.btn-success,
+button.btn-success,
+a.btn-success {
+    background-color: $osis-accent !important;
+    border-color: $osis-accent !important;
+    color: #ffffff !important;
+
+    &:hover,
+    &:focus {
+        background-color: darken($osis-accent, 8%) !important;
+        border-color: darken($osis-accent, 10%) !important;
+        box-shadow: 0 4px 12px rgba($osis-accent, 0.35);
+    }
+}
+
+// =============================================================================
+// OUTLINE BUTTONS
+// =============================================================================
+.btn-outline-primary {
+    color: $osis-primary !important;
+    border-color: $osis-primary !important;
+    background-color: transparent !important;
+
+    &:hover,
+    &:focus {
+        background-color: $osis-primary !important;
+        color: #ffffff !important;
+    }
+}
+
+.btn-outline-secondary {
+    color: $osis-secondary !important;
+    border-color: $osis-secondary !important;
+    background-color: transparent !important;
+
+    &:hover,
+    &:focus {
+        background-color: $osis-secondary !important;
+        color: $osis-dark !important;
+    }
+}
+
+// =============================================================================
+// LINK BUTTON
+// =============================================================================
+.btn-link {
+    color: $osis-primary !important;
+    text-decoration: none;
+    
+    &:hover {
+        color: darken($osis-primary, 10%) !important;
+        text-decoration: underline;
+    }
+}
+
+// =============================================================================
+// ODOO SPECIFIC BUTTONS
+// =============================================================================
+
+// Action buttons in form views
+.o_form_button_save,
+.o_form_button_create {
+    background-color: $osis-primary !important;
+    border-color: $osis-primary !important;
+    
+    &:hover {
+        background-color: darken($osis-primary, 8%) !important;
+    }
+}
+
+// Status bar buttons
+.o_statusbar_buttons {
+    .btn-primary {
+        background-color: $osis-primary !important;
+        border-color: $osis-primary !important;
+    }
+}
+
+// Dropdown toggle buttons
+.o_dropdown_toggler_btn {
+    &.btn-primary {
+        background-color: $osis-primary !important;
+        border-color: $osis-primary !important;
+    }
+}
+
+// Control panel buttons
+.o_control_panel {
+    .btn-primary {
+        background-color: $osis-primary !important;
+        border-color: $osis-primary !important;
+    }
+}
+
+// Icon buttons
+.btn-icon {
+    padding: 0.4rem;
+    border-radius: 6px;
+    
+    &:hover {
+        background-color: rgba($osis-primary, 0.1);
+    }
+}

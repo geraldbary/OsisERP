@@ -1,0 +1,128 @@
+// os_web_theme/static/src/scss/theme_clean.scss
+// OsisERP Theme - Clean & Minimal
+// Only essential brand customizations
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #0066CC;
+$osis-secondary: #FF9500;
+$osis-dark: #1D1D1F;
+$osis-accent: #34C759;
+
+// =============================================================================
+// NAVBAR ONLY - Dark branded header
+// =============================================================================
+.o_main_navbar {
+    background: $osis-dark !important;
+    
+    .o_menu_brand {
+        color: #fff !important;
+        font-weight: 600 !important;
+        
+        &:hover {
+            color: $osis-secondary !important;
+        }
+    }
+
+    .o_menu_sections,
+    .o_menu_systray {
+        a, button, .dropdown-toggle {
+            color: rgba(255, 255, 255, 0.9) !important;
+            
+            &:hover {
+                color: #fff !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// PRIMARY COLOR OVERRIDES
+// =============================================================================
+.btn-primary {
+    background-color: $osis-primary !important;
+    border-color: $osis-primary !important;
+    
+    &:hover, &:focus, &:active {
+        background-color: darken($osis-primary, 10%) !important;
+        border-color: darken($osis-primary, 10%) !important;
+    }
+}
+
+.btn-outline-primary {
+    color: $osis-primary !important;
+    border-color: $osis-primary !important;
+    
+    &:hover {
+        background-color: $osis-primary !important;
+        color: #fff !important;
+    }
+}
+
+a {
+    color: $osis-primary;
+    
+    &:hover {
+        color: darken($osis-primary, 15%);
+    }
+}
+
+// =============================================================================
+// FORM CHECKBOXES & TOGGLES
+// =============================================================================
+.form-check-input:checked {
+    background-color: $osis-primary !important;
+    border-color: $osis-primary !important;
+}
+
+// =============================================================================
+// BADGES
+// =============================================================================
+.badge.bg-primary,
+.bg-primary {
+    background-color: $osis-primary !important;
+}
+
+// =============================================================================
+// SELECTION/FOCUS STATES
+// =============================================================================
+.form-control:focus,
+.form-select:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: $osis-primary !important;
+    box-shadow: 0 0 0 0.2rem rgba($osis-primary, 0.15) !important;
+}
+
+// =============================================================================
+// DROPDOWN MENUS - Ensure readable
+// =============================================================================
+.dropdown-menu {
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    
+    .dropdown-item {
+        color: #333 !important;
+        
+        &:hover {
+            background: rgba($osis-primary, 0.08) !important;
+            color: $osis-primary !important;
+        }
+        
+        &.active {
+            background: $osis-primary !important;
+            color: #fff !important;
+        }
+    }
+}
+
+// =============================================================================
+// LOGIN PAGE
+// =============================================================================
+.oe_login {
+    background: linear-gradient(135deg, $osis-primary 0%, $osis-dark 100%) !important;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- osiserp_syscohada_reports/wizard/general_ledger_wizard_view.xml -->
+<odoo>
+    <!-- Extend General Ledger Wizard with SYSCOHADA options -->
+    <record id="general_ledger_wizard_syscohada" model="ir.ui.view">
+        <field name="name">general.ledger.wizard.syscohada</field>
+        <field name="model">general.ledger.report.wizard</field>
+        <field name="inherit_id" ref="account_financial_report.general_ledger_wizard"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            
+            <!-- Add SYSCOHADA Format section -->
+            <xpath expr="//group[@name='other_filters']" position="after">
+                <group name="syscohada_format" string="Format SYSCOHADA">
+                    <field name="column_layout" widget="radio"/>
+                </group>
+            </xpath>
+            
+            <!-- Add SYSCOHADA display options -->
+            <xpath expr="//field[@name='show_cost_center']" position="after">
+                <separator string="Options d'affichage SYSCOHADA"/>
+                <field name="show_opening_balance"/>
+                <field name="show_period_movements"/>
+                <field name="show_cumulative_balance"/>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>

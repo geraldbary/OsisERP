@@ -1,0 +1,71 @@
+[options]
+; =============================================================================
+; OsisERP Odoo Configuration Template
+; =============================================================================
+; Replace variables with actual values:
+;   ${DB_HOST}, ${DB_PORT}, ${DB_USER}, ${DB_PASSWORD}
+;   ${ADMIN_PASSWORD}, ${WORKERS}, ${MAX_CRON}, ${DB_MAXCONN}
+;   ${LIMIT_MEM_SOFT}, ${LIMIT_MEM_HARD}
+; =============================================================================
+
+; Database settings
+db_host = ${DB_HOST}
+db_port = ${DB_PORT}
+db_user = ${DB_USER}
+db_password = ${DB_PASSWORD}
+db_name = False
+db_template = template0
+
+; Addons paths
+addons_path = /opt/odoo/odoo/addons,/mnt/extra-addons,/mnt/custom-addons,/mnt/osiserp-oca,/mnt/osiserp-themes,/mnt/osiserp-core
+
+; Server settings
+http_port = 8069
+gevent_port = 8072
+proxy_mode = True
+
+; Logging
+logfile = /var/log/odoo/odoo-server.log
+log_level = warn
+log_handler = :WARNING
+
+; =============================================================================
+; Performance Tuning
+; =============================================================================
+; Adjust based on server resources and expected user count:
+;
+; Small (1-10 users):
+;   workers = 2, max_cron_threads = 1, db_maxconn = 32
+;   limit_memory_soft = 536870912, limit_memory_hard = 1073741824
+;
+; Medium (10-50 users):
+;   workers = 4, max_cron_threads = 2, db_maxconn = 64
+;   limit_memory_soft = 1073741824, limit_memory_hard = 2147483648
+;
+; Large (50-200 users):
+;   workers = 8, max_cron_threads = 2, db_maxconn = 128
+;   limit_memory_soft = 2147483648, limit_memory_hard = 4294967296
+;
+; Enterprise (200+ users):
+;   workers = CPU_CORES * 2, max_cron_threads = 4, db_maxconn = 256
+;   limit_memory_soft = 3221225472, limit_memory_hard = 6442450944
+; =============================================================================
+
+workers = ${WORKERS}
+max_cron_threads = ${MAX_CRON}
+limit_memory_hard = ${LIMIT_MEM_HARD}
+limit_memory_soft = ${LIMIT_MEM_SOFT}
+limit_time_cpu = 1800
+limit_time_real = 3600
+limit_request = 8192
+db_maxconn = ${DB_MAXCONN}
+
+; Security
+admin_passwd = ${ADMIN_PASSWORD}
+list_db = False
+
+; Data directory
+data_dir = /var/lib/odoo
+
+; Session settings
+server_wide_modules = base,web

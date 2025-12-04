@@ -1,0 +1,214 @@
+// os_web_theme/static/src/scss/kanban.scss
+// OsisERP Kanban View Styling
+
+// =============================================================================
+// BRAND COLORS
+// =============================================================================
+$osis-primary: #004AAD !default;
+$osis-secondary: #F2A900 !default;
+$osis-dark: #1A1F25 !default;
+$osis-light: #F7F9FB !default;
+$osis-accent: #0DBF6F !default;
+
+// =============================================================================
+// KANBAN VIEW
+// =============================================================================
+.o_kanban_view {
+    background-color: $osis-light;
+    padding: 16px;
+
+    // Kanban renderer
+    .o_kanban_renderer {
+        background-color: transparent;
+    }
+
+    // Column groups
+    .o_kanban_group {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 12px;
+        padding: 8px;
+        margin: 0 6px;
+        
+        &:first-child {
+            margin-left: 0;
+        }
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    // Column headers
+    .o_kanban_group_header,
+    .o_kanban_header {
+        background-color: transparent;
+        border-bottom: none;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+
+        .o_column_title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: $osis-dark;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        
+        .o_kanban_counter {
+            background-color: rgba($osis-primary, 0.1);
+            color: $osis-primary;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        // Fold/unfold button
+        .o_kanban_toggle_fold {
+            color: #6b7280;
+            
+            &:hover {
+                color: $osis-primary;
+            }
+        }
+    }
+
+    // Kanban cards
+    .o_kanban_record {
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(26, 31, 37, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 12px 14px;
+        margin-bottom: 8px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            box-shadow: 0 8px 24px rgba(26, 31, 37, 0.12);
+            border-color: $osis-primary;
+            transform: translateY(-2px);
+        }
+
+        // Card title
+        .o_kanban_record_title,
+        .o_kanban_record_headings strong {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: $osis-dark;
+            margin-bottom: 4px;
+        }
+
+        // Card subtitle
+        .o_kanban_record_subtitle {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        // Card body text
+        .o_kanban_record_body {
+            color: #4b5563;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        // Tags in cards
+        .o_tag,
+        .badge {
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        // Progress bar
+        .o_kanban_progressbar {
+            .progress {
+                height: 6px;
+                border-radius: 3px;
+                background-color: #e5e7eb;
+                
+                .progress-bar {
+                    background-color: $osis-accent;
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        // Image in card
+        .o_kanban_image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        // Bottom section
+        .o_kanban_record_bottom {
+            border-top: 1px solid #f3f4f6;
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+
+        // Dropdown menu
+        .o_kanban_manage_toggle_button {
+            color: #9ca3af;
+            
+            &:hover {
+                color: $osis-primary;
+            }
+        }
+    }
+
+    // Quick create
+    .o_kanban_quick_create {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(26, 31, 37, 0.1);
+        border: 2px dashed $osis-primary;
+        padding: 12px;
+        
+        input {
+            border-radius: 8px;
+        }
+    }
+
+    // Add column button
+    .o_kanban_add_column {
+        background-color: rgba($osis-primary, 0.05);
+        border: 2px dashed rgba($osis-primary, 0.3);
+        border-radius: 12px;
+        color: $osis-primary;
+        
+        &:hover {
+            background-color: rgba($osis-primary, 0.1);
+            border-color: $osis-primary;
+        }
+    }
+}
+
+// =============================================================================
+// KANBAN DASHBOARD TILES
+// =============================================================================
+.o_kanban_dashboard {
+    .o_kanban_record {
+        border-radius: 16px;
+        
+        .o_kanban_card_header {
+            background-color: $osis-primary;
+            color: #ffffff;
+            border-radius: 16px 16px 0 0;
+            padding: 16px;
+            
+            .o_kanban_card_header_title {
+                font-weight: 600;
+            }
+        }
+        
+        .o_kanban_primary_left,
+        .o_kanban_primary_right {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $osis-dark;
+        }
+    }
+}

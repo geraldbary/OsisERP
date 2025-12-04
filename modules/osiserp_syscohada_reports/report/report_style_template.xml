@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- osiserp_syscohada_reports/report/report_style_template.xml -->
+<odoo>
+    <!-- SYSCOHADA Report Header Template -->
+    <template id="syscohada_report_header">
+        <div class="syscohada-header">
+            <div class="header-left">
+                <div class="company-name" t-out="company_name"/>
+                <div class="company-info" t-if="company_vat">
+                    RCCM: <t t-out="company_vat"/>
+                </div>
+            </div>
+            <div class="header-center">
+                <h2 class="report-title" t-out="report_title"/>
+                <div class="report-period">
+                    <t t-if="date_from and date_to">
+                        Du <t t-out="date_from" t-options="{'widget': 'date'}"/>
+                        au <t t-out="date_to" t-options="{'widget': 'date'}"/>
+                    </t>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="currency-info">
+                    Devise: <t t-out="currency_name"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Toolbar Template -->
+    <template id="syscohada_toolbar">
+        <div class="syscohada-toolbar no-print">
+            <div class="toolbar-section">
+                <span class="toolbar-label">Période:</span>
+                <span class="toolbar-value">
+                    <t t-out="date_from" t-options="{'widget': 'date'}"/> - 
+                    <t t-out="date_to" t-options="{'widget': 'date'}"/>
+                </span>
+            </div>
+            <div class="toolbar-separator">|</div>
+            <div class="toolbar-section">
+                <span class="toolbar-label">Écritures:</span>
+                <span class="toolbar-value">
+                    <t t-if="only_posted_moves">Validées uniquement</t>
+                    <t t-else="">Toutes</t>
+                </span>
+            </div>
+            <t t-if="column_layout">
+                <div class="toolbar-separator">|</div>
+                <div class="toolbar-section">
+                    <span class="toolbar-label">Format:</span>
+                    <span class="toolbar-value"><t t-out="column_layout"/> colonnes</span>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Table Header for Balance des Comptes (6 columns) -->
+    <template id="syscohada_balance_header_6col">
+        <div class="act_as_thead syscohada-thead">
+            <div class="act_as_row labels">
+                <div class="act_as_cell" style="width: 6%;">Réf</div>
+                <div class="act_as_cell" style="width: 8%;">N° des comptes</div>
+                <div class="act_as_cell" style="width: 22%;">Intitulés Comptes</div>
+                <div class="act_as_cell amount" style="width: 10%;">Soldes à l'ouverture<br/>Débiteur</div>
+                <div class="act_as_cell amount" style="width: 10%;">Soldes à l'ouverture<br/>Créditeur</div>
+                <div class="act_as_cell amount" style="width: 10%;">Mouvement<br/>Débit</div>
+                <div class="act_as_cell amount" style="width: 10%;">Mouvement<br/>Crédit</div>
+                <div class="act_as_cell amount" style="width: 12%;">Soldes à la clôture<br/>Débiteur</div>
+                <div class="act_as_cell amount" style="width: 12%;">Soldes à la clôture<br/>Créditeur</div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Table Header for Grand Livre -->
+    <template id="syscohada_ledger_header">
+        <div class="act_as_thead syscohada-thead">
+            <div class="act_as_row labels">
+                <div class="act_as_cell" style="width: 8%;">Date</div>
+                <div class="act_as_cell" style="width: 10%;">N° Pièce</div>
+                <div class="act_as_cell" style="width: 32%;">Libellé</div>
+                <div class="act_as_cell" style="width: 10%;">Tiers</div>
+                <div class="act_as_cell" style="width: 6%;">Devise</div>
+                <div class="act_as_cell amount" style="width: 11%;">Débit</div>
+                <div class="act_as_cell amount" style="width: 11%;">Crédit</div>
+                <div class="act_as_cell amount" style="width: 12%;">Solde</div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Bilan Header (Balance Sheet) -->
+    <template id="syscohada_bilan_header">
+        <div class="act_as_thead syscohada-thead bilan-header">
+            <div class="act_as_row labels">
+                <div class="act_as_cell" style="width: 5%;">REF</div>
+                <div class="act_as_cell" style="width: 35%;">ACTIF</div>
+                <div class="act_as_cell" style="width: 5%;">Note</div>
+                <div class="act_as_cell amount" style="width: 13%;">EXERCICE AU<br/><t t-out="date_to" t-options="{'widget': 'date'}"/><br/>BRUT</div>
+                <div class="act_as_cell amount" style="width: 13%;">AMORT et<br/>DÉPREC.</div>
+                <div class="act_as_cell amount" style="width: 14%;">NET</div>
+                <div class="act_as_cell amount" style="width: 15%;">EXERCICE AU<br/><t t-out="prev_date_to" t-options="{'widget': 'date'}"/><br/>NET</div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Compte de Résultat Header (Income Statement) -->
+    <template id="syscohada_resultat_header">
+        <div class="act_as_thead syscohada-thead resultat-header">
+            <div class="act_as_row labels">
+                <div class="act_as_cell" style="width: 5%;">REF</div>
+                <div class="act_as_cell" style="width: 45%;">LIBELLÉS</div>
+                <div class="act_as_cell" style="width: 5%;">Note</div>
+                <div class="act_as_cell amount" style="width: 22%;">EXERCICE AU<br/><t t-out="date_to" t-options="{'widget': 'date'}"/><br/>NET</div>
+                <div class="act_as_cell amount" style="width: 23%;">EXERCICE AU<br/><t t-out="prev_date_to" t-options="{'widget': 'date'}"/><br/>NET</div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SYSCOHADA Total Row -->
+    <template id="syscohada_total_row">
+        <div class="act_as_row syscohada-total-row">
+            <div class="act_as_cell total-label" t-att-style="'width: ' + str(label_width) + '%;'">
+                <strong t-out="total_label"/>
+            </div>
+            <t t-foreach="amounts" t-as="amount">
+                <div class="act_as_cell amount">
+                    <strong t-out="amount" t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

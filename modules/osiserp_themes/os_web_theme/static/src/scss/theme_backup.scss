@@ -1,0 +1,803 @@
+// os_web_theme/static/src/scss/theme.scss
+// OsisERP Theme - Clean Professional Design
+// Compatible with Odoo 18 Community
+
+// =============================================================================
+// BRAND COLORS - OsisERP
+// =============================================================================
+$osis-primary: #0066CC;
+$osis-primary-dark: #004C99;
+$osis-secondary: #FF9500;
+$osis-dark: #1C1C1E;
+$osis-dark-light: #2C2C2E;
+$osis-light: #F5F5F7;
+$osis-accent: #34C759;
+$osis-border: #D1D1D6;
+$osis-text: #1C1C1E;
+$osis-text-muted: #8E8E93;
+$osis-white: #FFFFFF;
+
+// =============================================================================
+// GLOBAL - Minimal changes
+// =============================================================================
+.o_web_client {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+// =============================================================================
+// NAVBAR - Modern Glass Effect
+// =============================================================================
+.o_main_navbar {
+    height: 56px !important;
+    min-height: 56px !important;
+    background: $osis-dark !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    padding: 0 20px !important;
+    display: flex !important;
+    align-items: center !important;
+
+    > * {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    // Brand name
+    .o_menu_brand {
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        color: $osis-white !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease !important;
+        letter-spacing: -0.02em !important;
+        
+        &:hover {
+            color: $osis-secondary !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+    }
+
+    // Nav items
+    .o_menu_sections {
+        gap: 4px !important;
+        margin-left: 8px !important;
+
+        .dropdown-toggle,
+        .nav-link,
+        > a {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            padding: 8px 14px !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+            
+            &:hover {
+                color: $osis-white !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+            }
+
+            &.active, &.show {
+                color: $osis-white !important;
+                background: rgba(255, 255, 255, 0.15) !important;
+            }
+        }
+    }
+
+    // Right side icons
+    .o_menu_systray {
+        gap: 4px !important;
+
+        .dropdown-toggle,
+        .nav-link,
+        button {
+            color: rgba(255, 255, 255, 0.8) !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+
+            &:hover {
+                color: $osis-white !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+            }
+        }
+
+        .badge {
+            background: $osis-secondary !important;
+            color: $osis-dark !important;
+        }
+    }
+
+    // All text in navbar
+    a, button, span, i {
+        color: inherit !important;
+    }
+}
+
+// =============================================================================
+// BUTTONS - Modern Design
+// =============================================================================
+.btn {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.btn-sm {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, $osis-primary 0%, $osis-primary-dark 100%) !important;
+    color: $osis-white !important;
+    box-shadow: 0 1px 3px rgba($osis-primary, 0.3), 0 1px 2px rgba($osis-primary, 0.2) !important;
+
+    &:hover, &:focus {
+        background: linear-gradient(135deg, $osis-primary-dark 0%, darken($osis-primary-dark, 5%) 100%) !important;
+        box-shadow: 0 4px 6px rgba($osis-primary, 0.3), 0 2px 4px rgba($osis-primary, 0.2) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    &:active {
+        transform: translateY(0) !important;
+    }
+}
+
+.btn-secondary {
+    background: $osis-white !important;
+    border: 1px solid $osis-border !important;
+    color: $osis-text !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+
+    &:hover, &:focus {
+        background: $osis-light !important;
+        border-color: darken($osis-border, 8%) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    }
+}
+
+.btn-success {
+    background: linear-gradient(135deg, $osis-accent 0%, darken($osis-accent, 8%) 100%) !important;
+    color: $osis-white !important;
+}
+
+.btn-outline-primary {
+    color: $osis-primary !important;
+    border: 2px solid $osis-primary !important;
+    background: transparent !important;
+
+    &:hover {
+        background: $osis-primary !important;
+        color: $osis-white !important;
+    }
+}
+
+.btn-link {
+    color: $osis-primary !important;
+    text-decoration: none !important;
+    padding: 0 !important;
+    
+    &:hover {
+        color: $osis-primary-dark !important;
+        text-decoration: underline !important;
+    }
+}
+
+// =============================================================================
+// FORM VIEWS - Modern Cards
+// =============================================================================
+.o_form_view {
+    background: $osis-light !important;
+
+    .o_form_sheet_bg {
+        padding: 24px !important;
+        background: $osis-light !important;
+    }
+
+    .o_form_sheet {
+        max-width: 100% !important;
+        padding: 32px !important;
+        border-radius: 16px !important;
+        border: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+        background: $osis-white !important;
+    }
+
+    // Form labels
+    .o_form_label {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: $osis-text-muted !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 6px !important;
+    }
+
+    // Section separators
+    .o_horizontal_separator {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: $osis-dark !important;
+        border: none !important;
+        padding: 16px 0 8px !important;
+        margin: 24px 0 16px !important;
+        position: relative !important;
+
+        &::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 40px !important;
+            height: 3px !important;
+            background: $osis-primary !important;
+            border-radius: 2px !important;
+        }
+    }
+
+    // Input fields
+    .o_field_widget input,
+    .o_field_widget textarea,
+    .o_field_widget select {
+        font-size: 14px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        border: 2px solid $osis-border !important;
+        background: $osis-white !important;
+        transition: all 0.2s ease !important;
+
+        &:hover {
+            border-color: darken($osis-border, 10%) !important;
+        }
+
+        &:focus {
+            border-color: $osis-primary !important;
+            box-shadow: 0 0 0 4px rgba($osis-primary, 0.1) !important;
+            outline: none !important;
+        }
+    }
+
+    // Groups
+    .o_group {
+        margin-bottom: 20px !important;
+    }
+
+    // Inner groups
+    .o_inner_group {
+        padding: 20px !important;
+        background: rgba($osis-light, 0.5) !important;
+        border-radius: 12px !important;
+        margin-bottom: 16px !important;
+    }
+}
+
+// =============================================================================
+// KANBAN CARDS - Modern Cards
+// =============================================================================
+.o_kanban_view {
+    background: $osis-light !important;
+    padding: 20px !important;
+
+    .o_kanban_record {
+        padding: 20px !important;
+        border-radius: 14px !important;
+        border: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+        background: $osis-white !important;
+        transition: all 0.25s ease !important;
+        margin: 8px !important;
+
+        &:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06) !important;
+            transform: translateY(-4px) !important;
+        }
+
+        strong, .o_kanban_record_title {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: $osis-dark !important;
+            margin-bottom: 8px !important;
+            display: block !important;
+        }
+
+        .o_kanban_record_subtitle,
+        .text-muted {
+            color: $osis-text-muted !important;
+            font-size: 13px !important;
+        }
+
+        .o_kanban_image {
+            border-radius: 10px !important;
+            overflow: hidden !important;
+        }
+
+        .o_kanban_tags {
+            margin-top: 12px !important;
+        }
+    }
+
+    // Kanban groups
+    .o_kanban_group {
+        background: rgba($osis-dark, 0.03) !important;
+        padding: 12px !important;
+        border-radius: 16px !important;
+        margin: 8px !important;
+
+        .o_kanban_header {
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            padding: 12px 16px !important;
+            background: $osis-white !important;
+            border-radius: 10px !important;
+            margin-bottom: 12px !important;
+            color: $osis-dark !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+        }
+    }
+
+    // Ungrouped kanban
+    &.o_kanban_ungrouped {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        gap: 16px !important;
+
+        .o_kanban_record {
+            margin: 0 !important;
+        }
+    }
+}
+
+// =============================================================================
+// LIST VIEW - Modern Table
+// =============================================================================
+.o_list_view {
+    background: $osis-white !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    margin: 16px !important;
+
+    .o_list_table {
+        font-size: 14px !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+
+        thead {
+            background: linear-gradient(135deg, $osis-dark 0%, $osis-dark-light 100%) !important;
+            
+            th {
+                color: $osis-white !important;
+                font-size: 12px !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                padding: 16px 20px !important;
+                border: none !important;
+                white-space: nowrap !important;
+
+                &:first-child {
+                    border-radius: 16px 0 0 0 !important;
+                }
+                &:last-child {
+                    border-radius: 0 16px 0 0 !important;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                transition: all 0.2s ease !important;
+
+                &:hover {
+                    background: rgba($osis-primary, 0.04) !important;
+                }
+
+                &:nth-child(even) {
+                    background: rgba($osis-light, 0.5) !important;
+                    
+                    &:hover {
+                        background: rgba($osis-primary, 0.06) !important;
+                    }
+                }
+
+                td {
+                    padding: 14px 20px !important;
+                    border-bottom: 1px solid $osis-border !important;
+                    vertical-align: middle !important;
+                    color: $osis-text !important;
+                }
+
+                &.o_selected_row {
+                    background: rgba($osis-primary, 0.1) !important;
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// CONTROL PANEL - Modern Header
+// =============================================================================
+.o_control_panel {
+    background: $osis-white !important;
+    border-bottom: 1px solid $osis-border !important;
+    padding: 16px 24px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+
+    .o_cp_top,
+    .o_cp_bottom {
+        gap: 12px !important;
+    }
+
+    // Breadcrumbs
+    .o_breadcrumb {
+        font-size: 14px !important;
+        
+        .o_back_button {
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            background: $osis-light !important;
+            transition: all 0.2s ease !important;
+
+            &:hover {
+                background: darken($osis-light, 5%) !important;
+            }
+        }
+
+        .active {
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            color: $osis-dark !important;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: $osis-text-muted !important;
+        }
+    }
+
+    // Search bar
+    .o_searchview {
+        border-radius: 12px !important;
+        border: 2px solid $osis-border !important;
+        background: $osis-light !important;
+        min-width: 300px !important;
+        transition: all 0.2s ease !important;
+        
+        input {
+            font-size: 14px !important;
+            padding: 10px 16px !important;
+            background: transparent !important;
+        }
+
+        &:focus-within {
+            border-color: $osis-primary !important;
+            background: $osis-white !important;
+            box-shadow: 0 0 0 4px rgba($osis-primary, 0.1) !important;
+        }
+    }
+
+    // Action buttons
+    .o_cp_action_menus {
+        gap: 8px !important;
+    }
+
+    // View switcher
+    .o_cp_switch_buttons {
+        .btn {
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            
+            &.active {
+                background: $osis-primary !important;
+                color: $osis-white !important;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// LINKS
+// =============================================================================
+a {
+    color: $osis-primary;
+    text-decoration: none !important;
+    
+    &:hover {
+        color: darken($osis-primary, 10%);
+    }
+}
+
+// =============================================================================
+// BADGES & TAGS - Modern Pills
+// =============================================================================
+.badge,
+.o_tag {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    letter-spacing: 0.3px !important;
+}
+
+.badge-primary, .bg-primary { background: $osis-primary !important; color: $osis-white !important; }
+.badge-success, .bg-success { background: $osis-accent !important; color: $osis-white !important; }
+.badge-warning, .bg-warning { background: $osis-secondary !important; color: $osis-dark !important; }
+.badge-danger, .bg-danger { background: #EF4444 !important; color: $osis-white !important; }
+.badge-info, .bg-info { background: #06B6D4 !important; color: $osis-white !important; }
+
+// =============================================================================
+// CHECKBOXES & TOGGLES
+// =============================================================================
+.form-check-input {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid $osis-border !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    
+    &:checked {
+        background-color: $osis-primary !important;
+        border-color: $osis-primary !important;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 4px rgba($osis-primary, 0.15) !important;
+    }
+}
+
+// Toggle switches
+.form-switch .form-check-input {
+    width: 44px !important;
+    height: 24px !important;
+    border-radius: 12px !important;
+}
+
+// =============================================================================
+// DROPDOWN MENUS - Modern
+// =============================================================================
+.dropdown-menu {
+    padding: 8px !important;
+    border-radius: 14px !important;
+    border: none !important;
+    background: $osis-white !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+
+    .dropdown-item {
+        font-size: 14px !important;
+        padding: 12px 16px !important;
+        border-radius: 10px !important;
+        color: $osis-text !important;
+        transition: all 0.15s ease !important;
+
+        &:hover {
+            background: rgba($osis-primary, 0.08) !important;
+            color: $osis-primary !important;
+        }
+        
+        &.active, &:active {
+            background: $osis-primary !important;
+            color: $osis-white !important;
+        }
+    }
+
+    .dropdown-divider {
+        margin: 8px 0 !important;
+        border-color: $osis-border !important;
+    }
+}
+
+// =============================================================================
+// MODALS - Modern Dialog
+// =============================================================================
+.modal-content {
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden !important;
+    
+    .modal-header {
+        background: linear-gradient(135deg, $osis-dark 0%, $osis-dark-light 100%) !important;
+        color: $osis-white !important;
+        padding: 20px 24px !important;
+        border: none !important;
+
+        .modal-title {
+            font-size: 18px !important;
+            font-weight: 700 !important;
+        }
+        
+        .btn-close {
+            filter: invert(1) !important;
+            opacity: 0.8 !important;
+            transition: all 0.2s ease !important;
+            
+            &:hover { 
+                opacity: 1 !important;
+                transform: scale(1.1) !important;
+            }
+        }
+    }
+
+    .modal-body {
+        padding: 24px !important;
+    }
+
+    .modal-footer {
+        padding: 16px 24px !important;
+        border-top: 1px solid $osis-border !important;
+        gap: 12px !important;
+    }
+}
+
+// =============================================================================
+// CHATTER - Modern Messages
+// =============================================================================
+.o_ChatterContainer {
+    .o_Chatter {
+        padding: 20px !important;
+        background: $osis-light !important;
+        border-radius: 16px !important;
+        margin: 16px !important;
+    }
+
+    .o_Message {
+        padding: 16px !important;
+        background: $osis-white !important;
+        border-radius: 12px !important;
+        margin-bottom: 12px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    }
+}
+
+// =============================================================================
+// STATUSBAR - Modern Pipeline
+// =============================================================================
+.o_statusbar_status {
+    gap: 4px !important;
+
+    .o_arrow_button {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        padding: 10px 20px !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease !important;
+        
+        &.o_arrow_button_current {
+            background: linear-gradient(135deg, $osis-primary 0%, $osis-primary-dark 100%) !important;
+            color: $osis-white !important;
+            box-shadow: 0 2px 8px rgba($osis-primary, 0.3) !important;
+        }
+
+        &:hover:not(.o_arrow_button_current) {
+            background: rgba($osis-primary, 0.1) !important;
+        }
+    }
+}
+
+// =============================================================================
+// NOTEBOOK TABS - Modern
+// =============================================================================
+.o_notebook {
+    .nav-tabs {
+        border: none !important;
+        background: $osis-light !important;
+        padding: 6px !important;
+        border-radius: 12px !important;
+        gap: 4px !important;
+        margin-bottom: 20px !important;
+
+        .nav-link {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            padding: 12px 20px !important;
+            color: $osis-text-muted !important;
+            border: none !important;
+            border-radius: 8px !important;
+            transition: all 0.2s ease !important;
+
+            &:hover {
+                color: $osis-primary !important;
+                background: rgba($osis-primary, 0.08) !important;
+            }
+
+            &.active {
+                color: $osis-white !important;
+                background: $osis-primary !important;
+                box-shadow: 0 2px 8px rgba($osis-primary, 0.3) !important;
+            }
+        }
+    }
+
+    .tab-content {
+        padding: 0 !important;
+    }
+}
+
+// =============================================================================
+// SCROLLBARS - Modern
+// =============================================================================
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    
+    &:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+// =============================================================================
+// SIDEBAR / APP MENU (Left Panel)
+// =============================================================================
+.o_main_navbar .o_menu_sections {
+    .dropdown-menu {
+        background: #fff !important;
+        
+        .dropdown-item {
+            color: $osis-text !important;
+            
+            &:hover {
+                background: rgba($osis-primary, 0.08) !important;
+                color: $osis-primary !important;
+            }
+        }
+    }
+}
+
+// App switcher dropdown (the sidebar shown in screenshot)
+.o_navbar_apps_menu .dropdown-menu,
+.o_action_manager .o_cp_switch_buttons,
+.o_web_client .o_action_manager {
+    .o_app {
+        background: #fff !important;
+        color: $osis-text !important;
+        
+        &:hover {
+            background: rgba($osis-primary, 0.08) !important;
+        }
+    }
+}
+
+// Fix dark sidebar if present
+.o_main_navbar + .o_action_manager,
+.o_action_manager {
+    background: $osis-light !important;
+}
+
+// Ensure all dropdowns have white background
+.dropdown-menu {
+    background: #fff !important;
+    
+    a, button, .dropdown-item {
+        color: $osis-text !important;
+        
+        &:hover {
+            color: $osis-primary !important;
+            background: rgba($osis-primary, 0.06) !important;
+        }
+    }
+}
+
+// =============================================================================
+// LOGIN PAGE
+// =============================================================================
+.o_web_client.o_login {
+    background: linear-gradient(135deg, $osis-primary 0%, $osis-dark 100%) !important;
+}

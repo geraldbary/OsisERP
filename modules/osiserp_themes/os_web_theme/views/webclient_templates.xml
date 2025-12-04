@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- os_web_theme/views/webclient_templates.xml -->
+<odoo>
+    <data>
+        <!-- 
+            OsisERP Webclient Customization
+            
+            Dynamic theme CSS is loaded via theme_loader.js service.
+            This ensures settings changes are applied on page load.
+        -->
+    </data>
+</odoo>

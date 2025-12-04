@@ -1,0 +1,113 @@
+// os_web_theme/static/src/scss/variables.scss
+// Main variables and global styles for OsisERP theme
+
+// =============================================================================
+// BRAND COLORS (also defined in _primary_variables.scss for early override)
+// =============================================================================
+$osis-primary: #004AAD !default;      // Osis Blue
+$osis-secondary: #F2A900 !default;    // Osis Gold
+$osis-dark: #1A1F25 !default;         // Midnight Charcoal
+$osis-light: #F7F9FB !default;        // Cloud White
+$osis-accent: #0DBF6F !default;       // Emerald Tech Green
+
+// Extended palette
+$osis-primary-light: lighten($osis-primary, 45%);
+$osis-primary-dark: darken($osis-primary, 15%);
+$osis-text-dark: #1f2937;
+$osis-text-muted: #6b7280;
+$osis-border: #e5e7eb;
+
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+$osis-font-heading: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$osis-font-body: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// =============================================================================
+// GLOBAL STYLES
+// =============================================================================
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+// Global font and background
+body, 
+.o_web_client {
+    font-family: $osis-font-body;
+    background-color: $osis-light;
+    color: $osis-text-dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings use Poppins
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $osis-font-heading;
+    font-weight: 600;
+    color: $osis-text-dark;
+}
+
+// =============================================================================
+// UTILITY CLASSES
+// =============================================================================
+.osiserp-bg-dark {
+    background-color: $osis-dark !important;
+    color: #ffffff !important;
+}
+
+.osiserp-bg-primary {
+    background-color: $osis-primary !important;
+    color: #ffffff !important;
+}
+
+.osiserp-bg-secondary {
+    background-color: $osis-secondary !important;
+    color: $osis-dark !important;
+}
+
+.osiserp-bg-accent {
+    background-color: $osis-accent !important;
+    color: #ffffff !important;
+}
+
+.osiserp-text-primary {
+    color: $osis-primary !important;
+}
+
+.osiserp-text-secondary {
+    color: $osis-secondary !important;
+}
+
+.osiserp-text-accent {
+    color: $osis-accent !important;
+}
+
+// =============================================================================
+// SCROLLBAR STYLING
+// =============================================================================
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $osis-light;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darken($osis-light, 20%);
+    border-radius: 4px;
+    
+    &:hover {
+        background: darken($osis-light, 30%);
+    }
+}
+
+// =============================================================================
+// SELECTION HIGHLIGHT
+// =============================================================================
+::selection {
+    background-color: rgba($osis-primary, 0.2);
+    color: $osis-text-dark;
+}

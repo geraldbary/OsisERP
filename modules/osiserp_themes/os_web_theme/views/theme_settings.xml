@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- os_web_theme/views/theme_settings.xml -->
+<odoo>
+    <data>
+
+        <!-- OsisERP Theme Settings Form -->
+        <record id="view_os_web_theme_settings_form" model="ir.ui.view">
+            <field name="name">os.web.theme.settings.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority">99</field>
+            <field name="arch" type="xml">
+                <form string="OsisERP Theme Settings">
+                    <sheet>
+                        <div class="oe_title mb-3">
+                            <h2>Theme Settings</h2>
+                        </div>
+
+                        <notebook>
+                            <!-- COLORS -->
+                            <page string="Colors" name="colors">
+                                <group>
+                                    <group string="Navbar">
+                                        <field name="osis_navbar_bg_color" widget="color"/>
+                                        <field name="osis_navbar_text_color" widget="color"/>
+                                    </group>
+                                    <group string="Brand">
+                                        <field name="osis_primary_color" widget="color"/>
+                                        <field name="osis_secondary_color" widget="color"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- HOME MENU -->
+                            <page string="Home Menu" name="home_menu">
+                                <group>
+                                    <group string="Background">
+                                        <field name="osis_home_bg_type" widget="radio"/>
+                                        <field name="osis_home_gradient_start" widget="color" invisible="osis_home_bg_type != 'gradient'"/>
+                                        <field name="osis_home_gradient_end" widget="color" invisible="osis_home_bg_type != 'gradient'"/>
+                                        <field name="osis_home_bg_color" widget="color" invisible="osis_home_bg_type != 'solid'"/>
+                                    </group>
+                                    <group string="App Tiles">
+                                        <field name="osis_app_tile_bg" widget="color"/>
+                                        <field name="osis_app_name_color" widget="color"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+
+                        <div class="alert alert-info mt-3">
+                            After saving, press <strong>Ctrl+Shift+R</strong> to refresh.
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button name="execute" string="Save" type="object" class="btn-primary"/>
+                        <button string="Cancel" special="cancel" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action to open Theme Settings -->
+        <record id="action_os_web_theme_settings" model="ir.actions.act_window">
+            <field name="name">OsisERP Theme Settings</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_os_web_theme_settings_form"/>
+            <field name="target">inline</field>
+            <field name="context">{'module': 'os_web_theme', 'bin_size': False}</field>
+        </record>
+
+        <!-- Menu under Settings -->
+        <menuitem id="menu_os_web_theme_root"
+                  name="OsisERP Theme"
+                  parent="base.menu_administration"
+                  sequence="99"/>
+
+        <menuitem id="menu_os_web_theme_settings"
+                  name="Theme Settings"
+                  parent="menu_os_web_theme_root"
+                  action="action_os_web_theme_settings"
+                  sequence="10"/>
+
+    </data>
+</odoo>

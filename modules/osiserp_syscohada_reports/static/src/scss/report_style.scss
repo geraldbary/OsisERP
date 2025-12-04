@@ -1,0 +1,589 @@
+// osiserp_syscohada_reports/static/src/scss/report_style.scss
+// SYSCOHADA/OHADA Financial Reports Styling
+// Professional design matching Banana Comptabilité OHADA format
+
+// =============================================================================
+// VARIABLES - OHADA Color Palette
+// =============================================================================
+$primary-dark: #1a3a5c;
+$header-blue: #3d7a9e;
+$accent-blue: #5a9fc4;
+$light-blue: #e6f2f7;
+$lighter-blue: #f4f9fc;
+$border-color: #c5dce8;
+$border-light: #e0eef5;
+$text-dark: #2c3e50;
+$text-muted: #6c7a89;
+$text-light: #95a5a6;
+$row-alt: #f8fbfd;
+$total-bg: #d4e8f2;
+$success-green: #27ae60;
+$danger-red: #c0392b;
+$white: #ffffff;
+
+// =============================================================================
+// BASE REPORT CONTAINER
+// =============================================================================
+.page {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+    font-size: 11px !important;
+    color: $text-dark !important;
+    line-height: 1.4 !important;
+    background: $white !important;
+    padding: 20px !important;
+}
+
+// =============================================================================
+// REPORT HEADER - SYSCOHADA STYLE (Banana.ch inspired)
+// =============================================================================
+.syscohada-report-header {
+    text-align: center !important;
+    margin: 0 0 25px 0 !important;
+    padding: 20px 30px !important;
+    background: linear-gradient(180deg, $lighter-blue 0%, $white 100%) !important;
+    border-bottom: 3px solid $header-blue !important;
+    border-radius: 4px 4px 0 0 !important;
+    
+    .report-title {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: $primary-dark !important;
+        margin: 0 0 8px 0 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .report-subtitle {
+        font-size: 12px !important;
+        color: $text-muted !important;
+        font-weight: 500 !important;
+        
+        span {
+            color: $header-blue !important;
+            font-weight: 600 !important;
+        }
+    }
+    
+    .report-company {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: $text-dark !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .report-currency {
+        font-size: 11px !important;
+        color: $text-light !important;
+        margin-top: 5px !important;
+    }
+}
+
+// =============================================================================
+// TOOLBAR STYLING - Filter Bar
+// =============================================================================
+.syscohada-toolbar {
+    background: $primary-dark !important;
+    color: $white !important;
+    padding: 12px 20px !important;
+    margin: 0 0 20px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 25px !important;
+    flex-wrap: wrap !important;
+    font-size: 11px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    
+    .toolbar-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 6px 12px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 4px !important;
+    }
+    
+    .toolbar-label {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-size: 10px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    .toolbar-value {
+        font-weight: 600 !important;
+        color: $white !important;
+    }
+    
+    .toolbar-separator {
+        color: rgba(255, 255, 255, 0.2) !important;
+        font-size: 16px !important;
+    }
+    
+    .toolbar-badge {
+        background: $accent-blue !important;
+        padding: 3px 8px !important;
+        border-radius: 10px !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+    }
+    
+    &.no-print {
+        @media print {
+            display: none !important;
+        }
+    }
+}
+
+// =============================================================================
+// TABLE STYLING - SYSCOHADA FORMAT (Professional Banana.ch style)
+// =============================================================================
+.act_as_table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 10px !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+    margin-bottom: 15px !important;
+    
+    &.data_table,
+    &.list_table {
+        border: 1px solid $border-color !important;
+        border-radius: 4px !important;
+        overflow: hidden !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+        
+        // SYSCOHADA Table Header
+        .act_as_thead,
+        .syscohada-thead {
+            background: linear-gradient(180deg, $header-blue 0%, darken($header-blue, 8%) 100%) !important;
+            color: $white !important;
+            
+            .act_as_cell {
+                padding: 10px 8px !important;
+                font-weight: 600 !important;
+                font-size: 9px !important;
+                text-align: center !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-bottom: none !important;
+                vertical-align: middle !important;
+                line-height: 1.4 !important;
+                
+                &:last-child {
+                    border-right: none !important;
+                }
+                
+                &.amount {
+                    text-align: center !important;
+                }
+            }
+        }
+        
+        // Data Rows
+        .act_as_row {
+            transition: background-color 0.15s ease !important;
+            
+            &.lines {
+                border-bottom: 1px solid $border-light !important;
+                
+                &:nth-child(even) {
+                    background: $row-alt !important;
+                }
+                
+                &:nth-child(odd) {
+                    background: $white !important;
+                }
+                
+                &:hover {
+                    background: $light-blue !important;
+                }
+                
+                &:last-child {
+                    border-bottom: none !important;
+                }
+            }
+            
+            .act_as_cell {
+                padding: 8px 10px !important;
+                vertical-align: middle !important;
+                border-right: 1px solid $border-light !important;
+                
+                &:last-child {
+                    border-right: none !important;
+                }
+                
+                &.amount {
+                    text-align: right !important;
+                    font-family: 'Consolas', 'Monaco', monospace !important;
+                    font-size: 10px !important;
+                    white-space: nowrap !important;
+                    color: $text-dark !important;
+                    
+                    // Negative values
+                    &.negative {
+                        color: $danger-red !important;
+                    }
+                    
+                    // Zero values
+                    &.zero {
+                        color: $text-light !important;
+                    }
+                }
+                
+                &.first_column {
+                    font-weight: 600 !important;
+                    color: $primary-dark !important;
+                }
+                
+                &.left {
+                    text-align: left !important;
+                }
+                
+                &.center {
+                    text-align: center !important;
+                }
+            }
+        }
+        
+        // Total Rows
+        .syscohada-total-row,
+        .act_as_row.labels[style*="font-weight: bold"] {
+            background: linear-gradient(180deg, $total-bg 0%, darken($total-bg, 5%) 100%) !important;
+            border-top: 2px solid $header-blue !important;
+            
+            .act_as_cell {
+                padding: 10px !important;
+                font-weight: 700 !important;
+                
+                &.amount {
+                    color: $primary-dark !important;
+                    font-size: 11px !important;
+                }
+                
+                &.total-label {
+                    text-align: left !important;
+                    padding-left: 15px !important;
+                    text-transform: uppercase !important;
+                    letter-spacing: 0.5px !important;
+                }
+            }
+        }
+    }
+}
+
+// =============================================================================
+// ACCOUNT TITLE - SYSCOHADA Style
+// =============================================================================
+.account_title,
+.act_as_caption {
+    background: linear-gradient(90deg, $light-blue 0%, $lighter-blue 100%) !important;
+    padding: 10px 15px !important;
+    margin: 20px 0 10px 0 !important;
+    border-left: 4px solid $header-blue !important;
+    border-radius: 0 4px 4px 0 !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    color: $primary-dark !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    
+    span:first-child {
+        font-weight: 700 !important;
+        color: $header-blue !important;
+    }
+}
+
+// Section headers (like IMMOBILISATIONS INCORPORELLES)
+.syscohada-section-header {
+    background: linear-gradient(135deg, $header-blue 0%, $accent-blue 100%) !important;
+    color: $white !important;
+    padding: 10px 15px !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin: 25px 0 15px 0 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+// Sub-section headers
+.syscohada-subsection {
+    background: $lighter-blue !important;
+    padding: 8px 15px !important;
+    font-weight: 600 !important;
+    font-size: 10px !important;
+    color: $primary-dark !important;
+    border-left: 3px solid $accent-blue !important;
+    margin: 10px 0 !important;
+}
+
+// =============================================================================
+// TOTALS ROW
+// =============================================================================
+.act_as_row.labels[style*="font-weight: bold"] {
+    background: #e8f4f8 !important;
+    border-top: 2px solid #1B2A4E !important;
+    
+    .act_as_cell {
+        padding: 10px 8px !important;
+        font-weight: 700 !important;
+        
+        &.amount {
+            color: #1B2A4E !important;
+        }
+    }
+}
+
+// =============================================================================
+// NEGATIVE VALUES
+// =============================================================================
+.amount {
+    // Negative values in red
+    &:has(span:contains('-')) {
+        color: #dc3545 !important;
+    }
+}
+
+// =============================================================================
+// PRINT STYLES
+// =============================================================================
+@media print {
+    .syscohada-toolbar {
+        background: #1B2A4E !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .act_as_thead {
+        background: #1B2A4E !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .account_title {
+        border-left-color: #1B2A4E !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+
+// =============================================================================
+// COLUMN LAYOUT SPECIFIC STYLES
+// =============================================================================
+// 2 Columns - Simple Debit/Credit
+.layout-2-columns {
+    .act_as_cell {
+        &:nth-child(1) { width: 50% !important; } // Account
+        &:nth-child(2) { width: 25% !important; } // Debit
+        &:nth-child(3) { width: 25% !important; } // Credit
+    }
+}
+
+// 3 Columns - Debit/Credit/Balance
+.layout-3-columns {
+    .act_as_cell {
+        &:nth-child(1) { width: 40% !important; } // Account
+        &:nth-child(2) { width: 20% !important; } // Debit
+        &:nth-child(3) { width: 20% !important; } // Credit
+        &:nth-child(4) { width: 20% !important; } // Balance
+    }
+}
+
+// 4 Columns - With Date and Label
+.layout-4-columns {
+    .act_as_cell {
+        &:nth-child(1) { width: 25% !important; } // Account
+        &:nth-child(2) { width: 10% !important; } // Date
+        &:nth-child(3) { width: 25% !important; } // Label
+        &:nth-child(4) { width: 13% !important; } // Debit
+        &:nth-child(5) { width: 13% !important; } // Credit
+        &:nth-child(6) { width: 14% !important; } // Balance
+    }
+}
+
+// 6 Columns - Full SYSCOHADA
+.layout-6-columns {
+    .act_as_cell {
+        &:nth-child(1) { width: 20% !important; } // Account
+        &:nth-child(2) { width: 8% !important; }  // Date
+        &:nth-child(3) { width: 20% !important; } // Label
+        &:nth-child(4) { width: 12% !important; } // Partner
+        &:nth-child(5) { width: 5% !important; }  // Currency
+        &:nth-child(6) { width: 12% !important; } // Debit
+        &:nth-child(7) { width: 12% !important; } // Credit
+        &:nth-child(8) { width: 11% !important; } // Balance
+    }
+}
+
+// =============================================================================
+// BALANCE DES COMPTES - SYSCOHADA 6/8 Column Layout
+// =============================================================================
+.balance-syscohada {
+    .act_as_thead .act_as_cell {
+        font-size: 8px !important;
+        padding: 6px 4px !important;
+    }
+}
+
+// 8 Columns - Balance des Comptes (Opening + Movement + Closing)
+.layout-balance-8-columns {
+    .act_as_cell {
+        &:nth-child(1) { width: 5% !important; }  // Ref
+        &:nth-child(2) { width: 7% !important; }  // Account Code
+        &:nth-child(3) { width: 20% !important; } // Account Name
+        &:nth-child(4) { width: 10% !important; } // Opening Debit
+        &:nth-child(5) { width: 10% !important; } // Opening Credit
+        &:nth-child(6) { width: 10% !important; } // Movement Debit
+        &:nth-child(7) { width: 10% !important; } // Movement Credit
+        &:nth-child(8) { width: 14% !important; } // Closing Debit
+        &:nth-child(9) { width: 14% !important; } // Closing Credit
+    }
+}
+
+// =============================================================================
+// BILAN ACTIF/PASSIF - SYSCOHADA Format
+// =============================================================================
+.bilan-syscohada {
+    .bilan-section-title {
+        background: $header-blue !important;
+        color: #fff !important;
+        padding: 8px 12px !important;
+        font-weight: 700 !important;
+        font-size: 11px !important;
+        text-transform: uppercase !important;
+    }
+    
+    .bilan-category {
+        background: $light-blue !important;
+        font-weight: 600 !important;
+        padding-left: 20px !important;
+    }
+    
+    .bilan-item {
+        padding-left: 35px !important;
+    }
+    
+    .bilan-total {
+        background: $total-bg !important;
+        font-weight: 700 !important;
+        border-top: 2px solid $header-blue !important;
+    }
+    
+    .bilan-grand-total {
+        background: $primary-blue !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        font-size: 11px !important;
+    }
+}
+
+// =============================================================================
+// COMPTE DE RESULTAT - SYSCOHADA Format
+// =============================================================================
+.resultat-syscohada {
+    .resultat-section {
+        background: $header-blue !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+    }
+    
+    .resultat-subtotal {
+        background: $light-blue !important;
+        font-weight: 600 !important;
+        font-style: italic !important;
+    }
+    
+    .resultat-total {
+        background: $total-bg !important;
+        font-weight: 700 !important;
+        border: 2px solid $header-blue !important;
+    }
+    
+    .resultat-net {
+        background: $primary-blue !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        font-size: 12px !important;
+    }
+    
+    // REF column styling
+    .ref-column {
+        font-weight: 700 !important;
+        color: $header-blue !important;
+        text-align: center !important;
+    }
+}
+
+// =============================================================================
+// NUMBER FORMATTING - SYSCOHADA Style (with apostrophe thousands separator)
+// =============================================================================
+.syscohada-number {
+    font-family: 'Courier New', monospace !important;
+    text-align: right !important;
+    
+    &.negative {
+        color: #C0392B !important;
+    }
+    
+    &.zero {
+        color: #999 !important;
+    }
+}
+
+// =============================================================================
+// RESPONSIVE ADJUSTMENTS
+// =============================================================================
+@media (max-width: 1200px) {
+    .act_as_table {
+        font-size: 9px !important;
+        
+        .act_as_cell {
+            padding: 4px !important;
+        }
+    }
+}
+
+// =============================================================================
+// PRINT OPTIMIZATION
+// =============================================================================
+@media print {
+    .syscohada-report-header {
+        border-bottom-color: $header-blue !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .syscohada-thead,
+    .act_as_thead {
+        background: $header-blue !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .syscohada-section-header,
+    .bilan-section-title,
+    .resultat-section {
+        background: $header-blue !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .bilan-grand-total,
+    .resultat-net {
+        background: $primary-blue !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .page_break {
+        page-break-before: always !important;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+}
