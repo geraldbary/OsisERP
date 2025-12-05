@@ -632,12 +632,16 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "127.0.0.1:8069:8069"
-      - "127.0.0.1:8072:8072"
+      - "0.0.0.0:8069:8069"
+      - "0.0.0.0:8072:8072"
     volumes:
       - ${DATA_DIR}/odoo-data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf:ro
       - ./custom/addons:/mnt/custom-addons:ro
+      - ./custom/addons/osiserp_oca:/mnt/osiserp-oca:ro
+      - ./custom/addons/osiserp_themes:/mnt/osiserp-themes:ro
+      - ./custom/addons/osiserp_syscohada_reports:/mnt/osiserp-core:ro
+      - ./modules:/mnt/extra-addons:ro
       - ${LOG_DIR}:/var/log/odoo
     environment:
       - HOST=db
@@ -677,9 +681,42 @@ services:
       - "-c"
       - "effective_cache_size=$PG_EFFECTIVE_CACHE"
 
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: osiserp-npm
+    ports:
+      - "80:80"
+      - "443:443"
+      - "81:81"
+    volumes:
+      - ${DATA_DIR}/npm-data:/data
+      - ${DATA_DIR}/npm-letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+    networks:
+      - osiserp-network
+
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: osiserp-files
+    ports:
+      - "8080:80"
+    volumes:
+      - ${DATA_DIR}/odoo-data/filestore:/srv/filestore
+      - ${BACKUP_DIR}:/srv/backups
+      - ${LOG_DIR}:/srv/logs
+      - ${DATA_DIR}/filebrowser.db:/database.db
+    environment:
+      - FB_NOAUTH=false
+      - FB_ROOT=/srv
+    restart: unless-stopped
+    networks:
+      - osiserp-network
+
 volumes:
   odoo-data:
   postgres-data:
+  npm-data:
+  npm-letsencrypt:
 
 networks:
   osiserp-network:
@@ -934,6 +971,13 @@ install_oca_modules() {
     clone_oca_repo "https://github.com/OCA/server-ux.git" "server-ux" "server-ux"
     clone_oca_repo "https://github.com/OCA/web.git" "web" "web"
     clone_oca_repo "https://github.com/OCA/reporting-engine.git" "reporting-engine" "reporting-engine"
+    clone_oca_repo "https://github.com/OCA/server-brand.git" "server-brand" "server-brand"
+    clone_oca_repo "https://github.com/OCA/server-env.git" "server-env" "server-env"
+    
+    # Document Management (File Manager)
+    log_info "Installing DOCUMENT MANAGEMENT modules..."
+    clone_oca_repo "https://github.com/OCA/dms.git" "dms" "dms"
+    clone_oca_repo "https://github.com/OCA/knowledge.git" "knowledge" "knowledge"
     
     # Package-specific modules
     for package in "${SELECTED_PACKAGES[@]}"; do
@@ -944,6 +988,15 @@ install_oca_modules() {
                 clone_oca_repo "https://github.com/OCA/account-financial-reporting.git" "account-financial-reporting" "account-financial-reporting"
                 clone_oca_repo "https://github.com/OCA/account-payment.git" "account-payment" "account-payment"
                 clone_oca_repo "https://github.com/OCA/mis-builder.git" "mis-builder" "mis-builder"
+                clone_oca_repo "https://github.com/OCA/account-invoicing.git" "account-invoicing" "account-invoicing"
+                clone_oca_repo "https://github.com/OCA/account-closing.git" "account-closing" "account-closing"
+                clone_oca_repo "https://github.com/OCA/account-reconcile.git" "account-reconcile" "account-reconcile"
+                clone_oca_repo "https://github.com/OCA/account-analytic.git" "account-analytic" "account-analytic"
+                clone_oca_repo "https://github.com/OCA/bank-statement-import.git" "bank-statement-import" "bank-statement-import"
+                clone_oca_repo "https://github.com/OCA/account-budgeting.git" "account-budgeting" "account-budgeting"
+                clone_oca_repo "https://github.com/OCA/operating-unit.git" "operating-unit" "operating-unit"
+                # Odoo Mates style accounting reports
+                clone_oca_repo "https://github.com/CybroOdoo/CysbroAddons.git" "cybro-addons" "cybro-addons" || true
                 ;;
             hr_payroll)
                 log_info "Installing HR & PAYROLL modules..."
@@ -1024,6 +1077,10 @@ configure_firewall() {
     ufw allow ssh > /dev/null 2>&1
     ufw allow http > /dev/null 2>&1
     ufw allow https > /dev/null 2>&1
+    ufw allow 8069/tcp > /dev/null 2>&1  # Odoo
+    ufw allow 8072/tcp > /dev/null 2>&1  # Odoo Longpolling
+    ufw allow 81/tcp > /dev/null 2>&1    # Nginx Proxy Manager Admin
+    ufw allow 8080/tcp > /dev/null 2>&1  # File Browser
     ufw --force enable > /dev/null 2>&1
     
     log_success "Firewall configured"
