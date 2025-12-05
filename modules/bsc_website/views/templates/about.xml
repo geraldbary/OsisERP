@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- About Page -->
+    <template id="bsc_about_page" name="BSC About">
+        <t t-call="website.layout">
+            <div id="wrap" class="bsc-page">
+                <!-- Page Header -->
+                <section class="page-header py-5 bg-primary text-white">
+                    <div class="container">
+                        <h1 class="display-4">About Us</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-transparent mb-0">
+                                <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
+                                <li class="breadcrumb-item active text-warning">About Us</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </section>
+
+                <!-- About Content -->
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row align-items-center mb-5">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <img src="/bsc_website/static/src/img/about-company.jpg" alt="About BSC" class="img-fluid rounded shadow"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <h6 class="text-primary text-uppercase">Who We Are</h6>
+                                <h2 class="mb-4">Committed to Your Success</h2>
+                                <p class="lead">We ensure your Business Goal. We are Dedicated to Support You.</p>
+                                <p>Groupe BSC International is a leading business services company operating across the Middle East and Africa. Our mission is to provide high-quality and reliable solutions and services to our clients.</p>
+                                <p>With our extensive network of business contacts and deep understanding of regional markets, we help businesses navigate complex environments and achieve their goals.</p>
+                            </div>
+                        </div>
+
+                        <!-- Mission & Vision -->
+                        <div class="row mt-5">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <div class="icon-box mb-3">
+                                            <i class="fa fa-bullseye fa-3x text-primary"></i>
+                                        </div>
+                                        <h4>Our Mission</h4>
+                                        <p>To have the reputation of a provider of high quality and reliable solutions and services. We aim to be the go-to company for all your business needs in the Middle East and Africa.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <div class="icon-box mb-3">
+                                            <i class="fa fa-eye fa-3x text-primary"></i>
+                                        </div>
+                                        <h4>Our Vision</h4>
+                                        <p>To be the leading business facilitation company connecting opportunities across the Middle East and Africa, fostering growth and prosperity for our clients and partners.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Values -->
+                        <div class="row mt-5">
+                            <div class="col-12 text-center mb-4">
+                                <h2>Our Core Values</h2>
+                            </div>
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="value-card text-center p-4">
+                                    <i class="fa fa-star fa-3x text-warning mb-3"></i>
+                                    <h5>Excellence</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="value-card text-center p-4">
+                                    <i class="fa fa-shield fa-3x text-warning mb-3"></i>
+                                    <h5>Integrity</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="value-card text-center p-4">
+                                    <i class="fa fa-users fa-3x text-warning mb-3"></i>
+                                    <h5>Partnership</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-4">
+                                <div class="value-card text-center p-4">
+                                    <i class="fa fa-rocket fa-3x text-warning mb-3"></i>
+                                    <h5>Innovation</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <record id="page_about" model="website.page">
+        <field name="name">About Us</field>
+        <field name="url">/about</field>
+        <field name="view_id" ref="bsc_about_page"/>
+        <field name="website_indexed">True</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>

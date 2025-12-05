@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Services Page -->
+    <template id="bsc_services_page" name="BSC Services">
+        <t t-call="website.layout">
+            <div id="wrap" class="bsc-page">
+                <!-- Page Header -->
+                <section class="page-header py-5 bg-primary text-white">
+                    <div class="container">
+                        <h1 class="display-4">Our Services</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-transparent mb-0">
+                                <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
+                                <li class="breadcrumb-item active text-warning">Services</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </section>
+
+                <!-- Services Grid -->
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-handshake-o"></i>
+                                    </div>
+                                    <h3>Business Connection</h3>
+                                    <p>We have an extensive and reliable network of business contacts across the Middle East and Africa. Our connections span multiple industries and sectors.</p>
+                                    <ul class="service-features">
+                                        <li>Strategic partnerships</li>
+                                        <li>Business introductions</li>
+                                        <li>Network expansion</li>
+                                        <li>Market access</li>
+                                    </ul>
+                                    <a href="/services/business-connection" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-line-chart"></i>
+                                    </div>
+                                    <h3>Investment Facilitation</h3>
+                                    <p>We provide our clients with comprehensive support services to facilitate their investments in emerging markets.</p>
+                                    <ul class="service-features">
+                                        <li>Investment advisory</li>
+                                        <li>Due diligence support</li>
+                                        <li>Market research</li>
+                                        <li>Risk assessment</li>
+                                    </ul>
+                                    <a href="/services/investment-facilitation" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-lightbulb-o"></i>
+                                    </div>
+                                    <h3>Consultancy &amp; Advisory</h3>
+                                    <p>We provide consulting and advisory services to governments and private sectors across various industries.</p>
+                                    <ul class="service-features">
+                                        <li>Strategic planning</li>
+                                        <li>Business development</li>
+                                        <li>Market entry strategy</li>
+                                        <li>Operational excellence</li>
+                                    </ul>
+                                    <a href="/services/consultancy" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-plane"></i>
+                                    </div>
+                                    <h3>Business Aviation</h3>
+                                    <p>We operate a modern fleet and offer a wide range of strategically sophisticated business aircrafts for your travel needs.</p>
+                                    <ul class="service-features">
+                                        <li>Private jet charter</li>
+                                        <li>Aircraft management</li>
+                                        <li>VIP travel services</li>
+                                        <li>Ground handling</li>
+                                    </ul>
+                                    <a href="/services/aviation" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <h3>Business Events</h3>
+                                    <p>We organize various business events year-round in both the Middle East and Africa to connect different people and minds.</p>
+                                    <ul class="service-features">
+                                        <li>Conferences &amp; summits</li>
+                                        <li>Trade exhibitions</li>
+                                        <li>Networking events</li>
+                                        <li>Corporate retreats</li>
+                                    </ul>
+                                    <a href="/services/events" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card-full h-100">
+                                    <div class="service-icon-lg">
+                                        <i class="fa fa-building"></i>
+                                    </div>
+                                    <h3>Company Formation</h3>
+                                    <p>We establish and administer secure and efficient corporate and trust structures for all types of investors.</p>
+                                    <ul class="service-features">
+                                        <li>Company registration</li>
+                                        <li>Legal compliance</li>
+                                        <li>Corporate structuring</li>
+                                        <li>Licensing support</li>
+                                    </ul>
+                                    <a href="/services/company-formation" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <record id="page_services" model="website.page">
+        <field name="name">Services</field>
+        <field name="url">/services</field>
+        <field name="view_id" ref="bsc_services_page"/>
+        <field name="website_indexed">True</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>

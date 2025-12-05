@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Team Page -->
+    <template id="bsc_team_page" name="BSC Team">
+        <t t-call="website.layout">
+            <div id="wrap" class="bsc-page">
+                <!-- Page Header -->
+                <section class="page-header py-5 bg-primary text-white">
+                    <div class="container">
+                        <h1 class="display-4">Our Team</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-transparent mb-0">
+                                <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
+                                <li class="breadcrumb-item active text-warning">Team</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </section>
+
+                <!-- Team Content -->
+                <section class="py-5">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary text-uppercase">Hello, Welcome!</h6>
+                            <h2>We always work with a great team</h2>
+                            <p class="text-muted">Let us tell your story together!</p>
+                        </div>
+
+                        <!-- Leadership -->
+                        <h3 class="mb-4">Leadership</h3>
+                        <div class="row mb-5">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/ceo.jpg" alt="Said SANOGO" class="img-fluid"/>
+                                        <div class="team-social">
+                                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="team-info">
+                                        <h4>Mr. Said SANOGO</h4>
+                                        <p class="text-primary">PDG - Groupe BSC International &amp; BSC Distribution</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dubai Team -->
+                        <h3 class="mb-4">Dubai Office</h3>
+                        <div class="row mb-5">
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/ops.jpg" alt="Starnie YAMSEU" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Starnie YAMSEU</h5>
+                                        <p>Operations Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bd.jpg" alt="Elvis TEGHA" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mr. Elvis TEGHA</h5>
+                                        <p>Business Development Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/admin.jpg" alt="Axelle SANDIE" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Axelle SANDIE</h5>
+                                        <p>Administrative Assistant</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/logistics.jpg" alt="Jomish JOSHY" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Jomish JOSHY</h5>
+                                        <p>Transport Logistics, Imports/Export</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Burkina Faso Team -->
+                        <h3 class="mb-4">Burkina Faso Office</h3>
+                        <div class="row mb-5">
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bf-director.jpg" alt="Guiratou OUEDRAOGO" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Guiratou OUEDRAOGO</h5>
+                                        <p>National Director</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bf-marketing.jpg" alt="Alima OUEDRAOGO" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Alima OUEDRAOGO</h5>
+                                        <p>Sales &amp; Marketing Assistant</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bf-accountant.jpg" alt="Nafissatou SORO" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Nafissatou SORO</h5>
+                                        <p>Accountant</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bf-reception.jpg" alt="Fatimata TAPSOBA" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Fatimata TAPSOBA</h5>
+                                        <p>Receptionist &amp; Sales</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Board Members -->
+                        <h3 class="mb-4">Board Members</h3>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card-full">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/board1.jpg" alt="Sergio Ivan" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Sergio Ivan</h5>
+                                        <p>Board Member</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <record id="page_team" model="website.page">
+        <field name="name">Team</field>
+        <field name="url">/team</field>
+        <field name="view_id" ref="bsc_team_page"/>
+        <field name="website_indexed">True</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>

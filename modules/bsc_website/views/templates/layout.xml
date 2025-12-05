@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Custom Header -->
+    <template id="bsc_header" inherit_id="website.layout" name="BSC Header">
+        <xpath expr="//header" position="replace">
+            <header class="bsc-header">
+                <!-- Top Bar -->
+                <div class="bsc-topbar bg-dark text-white py-2">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <ul class="list-inline mb-0">
+                                    <li class="list-inline-item me-4">
+                                        <i class="fa fa-phone me-2"></i>
+                                        <a href="tel:+971504256870" class="text-white">+971 50 425 6870</a>
+                                    </li>
+                                    <li class="list-inline-item me-4">
+                                        <i class="fa fa-envelope me-2"></i>
+                                        <a href="mailto:info@groupe-bsc-international.com" class="text-white">info@groupe-bsc-international.com</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-map-marker me-2"></i>
+                                        <span>Hyatt Regency, The Galleria Residence, Office 259</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <a href="https://wa.me/message/EQSY5OFPJXORM1" class="text-white me-3" target="_blank">
+                                    <i class="fa fa-whatsapp fa-lg"></i>
+                                </a>
+                                <a href="#" class="text-white me-3"><i class="fa fa-facebook fa-lg"></i></a>
+                                <a href="#" class="text-white me-3"><i class="fa fa-linkedin fa-lg"></i></a>
+                                <a href="#" class="text-white"><i class="fa fa-twitter fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Navigation -->
+                <nav class="navbar navbar-expand-lg bsc-navbar py-3">
+                    <div class="container">
+                        <a class="navbar-brand" href="/">
+                            <img src="/bsc_website/static/src/img/logo.png" alt="BSC International" height="60" class="bsc-logo"/>
+                            <span class="brand-text ms-2">Groupe BSC International</span>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bscNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="bscNavbar">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about">About Us</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="/services" data-bs-toggle="dropdown">Services</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/services/business-connection">Business Connection</a></li>
+                                        <li><a class="dropdown-item" href="/services/investment-facilitation">Investment Facilitation</a></li>
+                                        <li><a class="dropdown-item" href="/services/consultancy">Consultancy &amp; Advisory</a></li>
+                                        <li><a class="dropdown-item" href="/services/aviation">Business Aviation</a></li>
+                                        <li><a class="dropdown-item" href="/services/events">Business Events</a></li>
+                                        <li><a class="dropdown-item" href="/services/company-formation">Company Formation</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/team">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/blog">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-primary text-white px-4" href="/contact">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </xpath>
+    </template>
+
+    <!-- Custom Footer -->
+    <template id="bsc_footer" inherit_id="website.layout" name="BSC Footer">
+        <xpath expr="//footer" position="replace">
+            <footer class="bsc-footer bg-dark text-white pt-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Column -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <h4 class="text-uppercase mb-4">About Groupe BSC International</h4>
+                            <p class="text-muted">
+                                Committed to Your Success. We ensure your Business Goal. 
+                                We are dedicated to support you - It's our Raison d'être.
+                            </p>
+                            <div class="social-links mt-4">
+                                <a href="#" class="me-3"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="#" class="me-3"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="#" class="me-3"><i class="fa fa-linkedin fa-2x"></i></a>
+                                <a href="#" class="me-3"><i class="fa fa-instagram fa-2x"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Links -->
+                        <div class="col-lg-2 col-md-6 mb-4">
+                            <h4 class="text-uppercase mb-4">Quick Links</h4>
+                            <ul class="list-unstyled footer-links">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/services">Services</a></li>
+                                <li><a href="/team">Our Team</a></li>
+                                <li><a href="/blog">Blog</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Services -->
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <h4 class="text-uppercase mb-4">Our Services</h4>
+                            <ul class="list-unstyled footer-links">
+                                <li><a href="/services/business-connection">Business Connection</a></li>
+                                <li><a href="/services/investment-facilitation">Investment Facilitation</a></li>
+                                <li><a href="/services/consultancy">Consultancy &amp; Advisory</a></li>
+                                <li><a href="/services/aviation">Business Aviation</a></li>
+                                <li><a href="/services/events">Business Events</a></li>
+                                <li><a href="/services/company-formation">Company Formation</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <h4 class="text-uppercase mb-4">Contact Info</h4>
+                            <ul class="list-unstyled contact-info">
+                                <li class="mb-3">
+                                    <i class="fa fa-map-marker me-3 text-primary"></i>
+                                    Hyatt Regency, The Galleria Residence, Office 259
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fa fa-phone me-3 text-primary"></i>
+                                    <a href="tel:+971504256870">+971 50 425 6870</a>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fa fa-envelope me-3 text-primary"></i>
+                                    <a href="mailto:info@groupe-bsc-international.com">info@groupe-bsc-international.com</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-whatsapp me-3 text-primary"></i>
+                                    <a href="https://wa.me/message/EQSY5OFPJXORM1" target="_blank">WhatsApp Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Copyright -->
+                <div class="footer-bottom py-3 mt-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="mb-0 text-muted">© 2024 Groupe BSC International. All Rights Reserved.</p>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <p class="mb-0 text-muted">Powered by <a href="https://globalosis.com" target="_blank">OSIS</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+</odoo>

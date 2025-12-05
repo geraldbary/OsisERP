@@ -1,0 +1,172 @@
+// Homepage Styles
+$bsc-primary: #1a237e;
+$bsc-accent: #ffc107;
+
+// Hero Section
+.bsc-hero {
+    .hero-slide {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/bsc_website/static/src/img/pattern.png') repeat;
+            opacity: 0.1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h5 {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        
+        h1 {
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+        opacity: 0.8;
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// About Section
+.bsc-about {
+    .about-image {
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid $bsc-primary;
+            z-index: -1;
+            border-radius: 0.5rem;
+        }
+        
+        img {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+// Services Section
+.bsc-services {
+    .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+        text-align: center;
+        
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            
+            .service-icon {
+                background: $bsc-primary;
+                color: white;
+            }
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba($bsc-primary, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s;
+            
+            i {
+                font-size: 2rem;
+                color: $bsc-primary;
+            }
+        }
+        
+        h4 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
+
+// Team Preview Section
+.bsc-team-preview {
+    .team-card {
+        text-align: center;
+        
+        .team-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 5px solid #f0f0f0;
+            transition: all 0.3s;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        &:hover .team-image {
+            border-color: $bsc-primary;
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            h5 {
+                margin-bottom: 0.25rem;
+                color: #333;
+            }
+            
+            p {
+                color: $bsc-primary;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+// CTA Section
+.bsc-cta {
+    background: linear-gradient(135deg, $bsc-primary 0%, darken($bsc-primary, 10%) 100%);
+    
+    h3 {
+        font-weight: 600;
+    }
+}

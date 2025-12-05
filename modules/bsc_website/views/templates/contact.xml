@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contact Page -->
+    <template id="bsc_contact_page" name="BSC Contact">
+        <t t-call="website.layout">
+            <div id="wrap" class="bsc-page">
+                <!-- Page Header -->
+                <section class="page-header py-5 bg-primary text-white">
+                    <div class="container">
+                        <h1 class="display-4">Contact Us</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-transparent mb-0">
+                                <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
+                                <li class="breadcrumb-item active text-warning">Contact</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </section>
+
+                <!-- Contact Content -->
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Contact Info -->
+                            <div class="col-lg-4 mb-4">
+                                <div class="contact-info-card h-100">
+                                    <h3 class="mb-4">Get In Touch</h3>
+                                    <p class="text-muted mb-4">Do Contact Us for further Inquiries! You can request for call back, we will call!</p>
+                                    
+                                    <div class="contact-item mb-4">
+                                        <div class="icon">
+                                            <i class="fa fa-map-marker fa-2x text-primary"></i>
+                                        </div>
+                                        <div class="info">
+                                            <h5>Location Address</h5>
+                                            <p>Hyatt Regency, The Galleria Residence, Office 259<br/>Dubai, UAE</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-item mb-4">
+                                        <div class="icon">
+                                            <i class="fa fa-phone fa-2x text-primary"></i>
+                                        </div>
+                                        <div class="info">
+                                            <h5>Phone Number</h5>
+                                            <p><a href="tel:+971504256870">+971 50 425 6870</a></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-item mb-4">
+                                        <div class="icon">
+                                            <i class="fa fa-envelope fa-2x text-primary"></i>
+                                        </div>
+                                        <div class="info">
+                                            <h5>Email Address</h5>
+                                            <p><a href="mailto:info@groupe-bsc-international.com">info@groupe-bsc-international.com</a></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <div class="icon">
+                                            <i class="fa fa-whatsapp fa-2x text-success"></i>
+                                        </div>
+                                        <div class="info">
+                                            <h5>WhatsApp</h5>
+                                            <p><a href="https://wa.me/message/EQSY5OFPJXORM1" target="_blank">Chat with us</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Form -->
+                            <div class="col-lg-8">
+                                <div class="contact-form-card">
+                                    <h3 class="mb-4">Send Us a Message</h3>
+                                    <form action="/website/form/" method="post" class="s_website_form" data-model_name="crm.lead" data-success_page="/contactus-thank-you">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Your Name *</label>
+                                                <input type="text" name="contact_name" class="form-control form-control-lg" required="required"/>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Email Address *</label>
+                                                <input type="email" name="email_from" class="form-control form-control-lg" required="required"/>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Phone Number</label>
+                                                <input type="tel" name="phone" class="form-control form-control-lg"/>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Company</label>
+                                                <input type="text" name="partner_name" class="form-control form-control-lg"/>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Subject *</label>
+                                                <input type="text" name="name" class="form-control form-control-lg" required="required"/>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Your Message *</label>
+                                                <textarea name="description" class="form-control" rows="5" required="required"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                                    <i class="fa fa-paper-plane me-2"></i>Send Message
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Map Section -->
+                <section class="py-0">
+                    <div class="container-fluid px-0">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5!2d54.4!3d25.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDA2JzAwLjAiTiA1NMKwMjQnMDAuMCJF!5e0!3m2!1sen!2sae!4v1234567890"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <record id="page_contact" model="website.page">
+        <field name="name">Contact</field>
+        <field name="url">/contact</field>
+        <field name="view_id" ref="bsc_contact_page"/>
+        <field name="website_indexed">True</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>

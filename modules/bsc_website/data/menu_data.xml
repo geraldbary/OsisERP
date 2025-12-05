@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu Items -->
+    <record id="menu_home" model="website.menu">
+        <field name="name">Home</field>
+        <field name="url">/</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="menu_about" model="website.menu">
+        <field name="name">About Us</field>
+        <field name="url">/about</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="menu_services" model="website.menu">
+        <field name="name">Services</field>
+        <field name="url">/services</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">30</field>
+    </record>
+
+    <!-- Services Submenu -->
+    <record id="menu_service_business" model="website.menu">
+        <field name="name">Business Connection</field>
+        <field name="url">/services/business-connection</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="menu_service_investment" model="website.menu">
+        <field name="name">Investment Facilitation</field>
+        <field name="url">/services/investment-facilitation</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="menu_service_consultancy" model="website.menu">
+        <field name="name">Consultancy &amp; Advisory</field>
+        <field name="url">/services/consultancy</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="menu_service_aviation" model="website.menu">
+        <field name="name">Business Aviation</field>
+        <field name="url">/services/aviation</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="menu_service_events" model="website.menu">
+        <field name="name">Business Events</field>
+        <field name="url">/services/events</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="menu_service_company" model="website.menu">
+        <field name="name">Company Formation</field>
+        <field name="url">/services/company-formation</field>
+        <field name="parent_id" ref="menu_services"/>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="menu_team" model="website.menu">
+        <field name="name">Team</field>
+        <field name="url">/team</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">40</field>
+    </record>
+
+    <record id="menu_blog" model="website.menu">
+        <field name="name">Blog</field>
+        <field name="url">/blog</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="menu_contact" model="website.menu">
+        <field name="name">Contact</field>
+        <field name="url">/contact</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">60</field>
+    </record>
+</odoo>

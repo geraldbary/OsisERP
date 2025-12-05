@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Homepage Template -->
+    <template id="bsc_homepage" name="BSC Homepage">
+        <t t-call="website.layout">
+            <div id="wrap" class="bsc-homepage">
+                
+                <!-- Hero Slider Section -->
+                <section class="bsc-hero">
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="hero-slide" style="background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);">
+                                    <div class="container">
+                                        <div class="row align-items-center min-vh-100">
+                                            <div class="col-lg-7">
+                                                <h5 class="text-warning mb-3">Committed to Your Success</h5>
+                                                <h1 class="display-3 text-white fw-bold mb-4">We ensure your Business Goal</h1>
+                                                <p class="lead text-white-50 mb-4">Notre Raison d'être</p>
+                                                <a href="/about" class="btn btn-warning btn-lg px-5 py-3">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="hero-slide" style="background: linear-gradient(135deg, #004d40 0%, #00695c 100%);">
+                                    <div class="container">
+                                        <div class="row align-items-center min-vh-100">
+                                            <div class="col-lg-7">
+                                                <h5 class="text-warning mb-3">Committed to Your Success</h5>
+                                                <h1 class="display-3 text-white fw-bold mb-4">We are Dedicated to Support You</h1>
+                                                <p class="lead text-white-50 mb-4">It's our Raison d'être</p>
+                                                <a href="/services" class="btn btn-warning btn-lg px-5 py-3">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="hero-slide" style="background: linear-gradient(135deg, #bf360c 0%, #e64a19 100%);">
+                                    <div class="container">
+                                        <div class="row align-items-center min-vh-100">
+                                            <div class="col-lg-7">
+                                                <h5 class="text-warning mb-3">Plan Then, Do</h5>
+                                                <h1 class="display-3 text-white fw-bold mb-4">Our Mission | Aims</h1>
+                                                <p class="lead text-white-50 mb-4">To have the reputation of a provider of high quality and reliable solutions and services.</p>
+                                                <a href="/contact" class="btn btn-warning btn-lg px-5 py-3">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section class="bsc-about py-5">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                <div class="about-image">
+                                    <img src="/bsc_website/static/src/img/about-img.jpg" alt="About BSC" class="img-fluid rounded shadow"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h6 class="text-primary text-uppercase">About Us</h6>
+                                <h2 class="mb-4">The Go-To Company For All Your Business Needs!</h2>
+                                <p class="text-muted mb-4">
+                                    We ensure your Business Goal. We are Dedicated to Support You. 
+                                    Our Mission aims to have the reputation of a provider of high quality 
+                                    and reliable solutions and services.
+                                </p>
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-check-circle text-primary fa-2x me-3"></i>
+                                            <span>Expertise &amp; Skills</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-check-circle text-primary fa-2x me-3"></i>
+                                            <span>Creative Ideas</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-check-circle text-primary fa-2x me-3"></i>
+                                            <span>Professional Team</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa fa-check-circle text-primary fa-2x me-3"></i>
+                                            <span>24/7 Support</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/about" class="btn btn-primary btn-lg mt-3">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="bsc-services py-5 bg-light">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary text-uppercase">Our Services</h6>
+                            <h2>We Are Providing The Best Services To You</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-handshake-o"></i>
+                                    </div>
+                                    <h4>Business Connection</h4>
+                                    <p>We have an extensive and reliable network of business contacts.</p>
+                                    <a href="/services/business-connection" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-line-chart"></i>
+                                    </div>
+                                    <h4>Investment Facilitation</h4>
+                                    <p>We provide our clients with support services to facilitate their investments.</p>
+                                    <a href="/services/investment-facilitation" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-lightbulb-o"></i>
+                                    </div>
+                                    <h4>Consultancy &amp; Advisory</h4>
+                                    <p>We provide consulting &amp; advisory services to governments and private sectors.</p>
+                                    <a href="/services/consultancy" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-plane"></i>
+                                    </div>
+                                    <h4>Business Aviation</h4>
+                                    <p>We operate a modern fleet and offer a wide range of business aircrafts.</p>
+                                    <a href="/services/aviation" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <h4>Business Events</h4>
+                                    <p>We organize various business events year-round in the Middle East &amp; Africa.</p>
+                                    <a href="/services/events" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="service-card h-100">
+                                    <div class="service-icon">
+                                        <i class="fa fa-building"></i>
+                                    </div>
+                                    <h4>Company Formation</h4>
+                                    <p>We establish and administer secure &amp; efficient corporate structures.</p>
+                                    <a href="/services/company-formation" class="btn btn-outline-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="/services" class="btn btn-primary btn-lg">View All Services</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Team Preview Section -->
+                <section class="bsc-team-preview py-5">
+                    <div class="container">
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary text-uppercase">Hello, Welcome!</h6>
+                            <h2>We always work with a great team</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/ceo.jpg" alt="Said SANOGO" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mr. Said SANOGO</h5>
+                                        <p>PDG - Groupe BSC International</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/ops.jpg" alt="Starnie YAMSEU" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Starnie YAMSEU</h5>
+                                        <p>Operations Manager - Dubai</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/bd.jpg" alt="Elvis TEGHA" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mr. Elvis TEGHA</h5>
+                                        <p>Business Development Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4">
+                                <div class="team-card">
+                                    <div class="team-image">
+                                        <img src="/bsc_website/static/src/img/team/admin.jpg" alt="Axelle SANDIE" class="img-fluid"/>
+                                    </div>
+                                    <div class="team-info">
+                                        <h5>Mme Axelle SANDIE</h5>
+                                        <p>Administrative Assistant</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="/team" class="btn btn-outline-primary btn-lg">Meet Our Team</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section class="bsc-cta py-5 bg-primary text-white">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <h3>You can request for call back, we will call!</h3>
+                                <p class="mb-0">Do Contact Us for further Inquiries!</p>
+                            </div>
+                            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                                <a href="/contact" class="btn btn-warning btn-lg px-5">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- Set Homepage -->
+    <record id="homepage" model="website.page">
+        <field name="name">Home</field>
+        <field name="url">/</field>
+        <field name="view_id" ref="bsc_homepage"/>
+        <field name="website_indexed">True</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>
