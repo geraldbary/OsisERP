@@ -130,11 +130,4 @@
         </t>
     </template>
 
-    <record id="page_contact" model="website.page">
-        <field name="name">Contact</field>
-        <field name="url">/contact</field>
-        <field name="view_id" ref="bsc_contact_page"/>
-        <field name="website_indexed">True</field>
-        <field name="is_published">True</field>
-    </record>
 </odoo>

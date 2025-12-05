@@ -95,11 +95,4 @@
         </t>
     </template>
 
-    <record id="page_about" model="website.page">
-        <field name="name">About Us</field>
-        <field name="url">/about</field>
-        <field name="view_id" ref="bsc_about_page"/>
-        <field name="website_indexed">True</field>
-        <field name="is_published">True</field>
-    </record>
 </odoo>

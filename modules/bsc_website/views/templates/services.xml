@@ -124,11 +124,4 @@
         </t>
     </template>
 
-    <record id="page_services" model="website.page">
-        <field name="name">Services</field>
-        <field name="url">/services</field>
-        <field name="view_id" ref="bsc_services_page"/>
-        <field name="website_indexed">True</field>
-        <field name="is_published">True</field>
-    </record>
 </odoo>

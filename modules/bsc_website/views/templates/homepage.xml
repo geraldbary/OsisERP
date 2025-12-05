@@ -263,12 +263,4 @@
         </t>
     </template>
 
-    <!-- Set Homepage -->
-    <record id="homepage" model="website.page">
-        <field name="name">Home</field>
-        <field name="url">/</field>
-        <field name="view_id" ref="bsc_homepage"/>
-        <field name="website_indexed">True</field>
-        <field name="is_published">True</field>
-    </record>
 </odoo>

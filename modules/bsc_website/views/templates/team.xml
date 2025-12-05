@@ -165,11 +165,4 @@
         </t>
     </template>
 
-    <record id="page_team" model="website.page">
-        <field name="name">Team</field>
-        <field name="url">/team</field>
-        <field name="view_id" ref="bsc_team_page"/>
-        <field name="website_indexed">True</field>
-        <field name="is_published">True</field>
-    </record>
 </odoo>
