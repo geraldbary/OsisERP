@@ -18,9 +18,7 @@
     'depends': [
         'website',
         'website_blog',
-        'website_form',
         'website_crm',
-        'website_slides',
         'contacts',
     ],
     'data': [
